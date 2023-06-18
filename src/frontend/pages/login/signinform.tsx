@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 import { setLogin } from "../../shared/index.ts";
 import Dropzone from "react-dropzone";
 import axios from 'axios';
+import CloseIcon from '@mui/icons-material/Close';
  
 const loginSchema = yup.object().shape({
   username: yup.string().required("Required"),
@@ -37,7 +38,7 @@ const SignInForm = () => {
           id: 1,
           name: "username",
           type: "text",
-          placeholder: "Username",
+          placeholder: "Enter your Username",
           errormessage: "Username should be 3-16 characters and shouldn't include any special character!",
           label: "Username",
           pattern: "^[A-Za-z0-9]{3,16}$",
@@ -47,7 +48,7 @@ const SignInForm = () => {
             id: 2,
             name: "password",
             type: "password",
-            placeholder: "Password",
+            placeholder: "Enter your Password",
             errormessage: "Password should be 8-20 characters and include at least 1 letter, 1 number and 1 special character!",
             label: "Password",
             //pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`,
@@ -71,8 +72,8 @@ const SignInForm = () => {
           );
 
           
-        console.log("adhfkahfk; Logged In");
-        navigate("/home");
+        console.log();
+        navigate("/Home");
       })
 
       // const loggedInResponse = await fetch(
@@ -117,15 +118,18 @@ const SignInForm = () => {
   
 
   return (
-    <div>
-      <div>
-        <form onSubmit={handleSubmit}>
+    <div className=''>
+      <button className='absolute p-7' onClick={() => navigate("/") }><CloseIcon sx={{fontSize: 50}}/></button>
+      <div className='flex align-middle justify-center text-[30px] pt-[50px] pb-9'>Log Into your Account</div>
+      <div className='flex align-middle w-[100%] h-[100%]  justify-center'>
+        <form className=' ' onSubmit={handleSubmit} noValidate>
 
           {inputs.map((inputs) => (
             <FormInputs key={inputs.id} {...inputs} onChange={onChange}
             />
           ))}
-          <button type="submit" >Submit</button>
+          <button className='  p-3 text-blue-800 underline end-full' onClick={() => navigate("/SignUp")}>Register for an Account</button>
+          <button className=' w-[100%] h-[50px] p-[9px] border font-bold text-xl rounded-md bg-gray-200 group-invalid:pointer-events-none group-invalid:opacity-30' type="submit" >Submit</button>
         </form>
       </div>
     </div>

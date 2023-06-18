@@ -6,7 +6,7 @@ type Props = {}
 const Games = (props: Props) => {
   return (
     <div className='flex justify-center'>
-      <div className=' grid grid-cols-3 gap-6 '>
+      <div className=' grid grid-cols-3 gap-9 '>
         <Gamesbox />
         <Gamesbox />
         <Gamesbox />

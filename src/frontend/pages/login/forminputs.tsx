@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 
 type Props = {
 
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-
+  // errorMessage: string;
 }
 
 interface inputsKey {
@@ -12,27 +12,45 @@ interface inputsKey {
   name: string;
   type: string;
   placeholder: string;
-  errorMessage: string;
+  errormessage: string;
   label: string;
   pattern: string;
   required: boolean;
 }
 
+
+
 const FormInputs = ({ onChange, ...inputs }: Props) => {
+
+  const [focused, setFocused] = useState(false);
+
+  const handleFocus = () => {
+    setFocused(true);
+  }
+
+
 
 
 
   var input = inputs as inputsKey
 
   return (
-    <div>
-      <label>{input.label}</label>
-      <input 
-      //placeholder={}
+    <div className='p-4'>
+    <div className='flex justify-center flex-col'>
+      <div className='flex text-left pr-5 text-l'>{input.label}</div>
+      <input className='bg-zinc-100 border rounded-md h-[50px] peer w-[300px] invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-500' 
+
       {...inputs} 
       onChange={onChange}
-      //onFocus={() => inputs.name ===}
-      />
+      onBlur={handleFocus}
+      //onFocus={() => inputs.name === "confirmPassword"}
+       />
+      <span className=' text-gray-600 hidden text-sm w-[300px] peer-[:not(:focus):invalid]:flex peer-[&:not(:placeholder-shown):not(:focus):invalid]:text-red-600 '>{input.errormessage}</span>
+      
+      
+  
+    </div>
+    
 
     </div>
   )
