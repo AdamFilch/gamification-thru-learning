@@ -13,6 +13,8 @@ import userRoutes from "./routes/users.js"
 import { register } from "./controllers/auth.js";
 import { verifyToken } from "./middleware/auth.js";
 import User from "./models/User.js"
+import { videos } from "../data/index.js";
+import { MongoClient } from "mongodb";
 
 
 
@@ -55,4 +57,25 @@ mongoose.connect(process.env.MONGO_URL, {
     useUnifiedTopology: true,
 }).then(() => {
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
+
+    // Insert Data one time
+    // try {
+    //     var MongoClient = require('mongodb').MongoClient;
+    //     const client = MongoClient(MONGO_URL);
+    //     const db = client.db("test");
+    //     const coll = db.collection("learnvideo");
+
+    //     const result = coll.insertMany(videos);
+
+    //     console.log(result.insertedIds);
+        
+
+    // } finally {
+    //     client.close();
+    //     console.log("Done")
+    // }
+    
+
+
+
 }).catch((error) => console.log(`${error} did not connect`))
