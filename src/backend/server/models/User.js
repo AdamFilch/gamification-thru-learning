@@ -32,8 +32,7 @@ const UserSchema = new mongoose.Schema(
         role: {
             type: String,
             enum: ['Player', 'Lecturer', 'Game Master'],
-            default: "Player",
-            
+            default: "Player",   
         }
     }, 
     {timestamps: true}

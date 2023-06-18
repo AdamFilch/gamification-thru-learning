@@ -1,4 +1,5 @@
- import mongoose from "mongoose";
+ import { MongoClient } from "mongodb";
+import mongoose from "mongoose";
 
 const userIds = [
     new mongoose.Types.ObjectId(),
@@ -13,22 +14,37 @@ export const users = [
         _id: userIds[0],
         fname: "Vinothini",
         username: "vinothini",
-        
-
-
 
 
     }
 ]
 
+// const client = new MongoClient(MONGO_URL);
 
-const videos = [
+
+async function insertData() {
+    try {
+        await client.connect();
+        const db = client.db("test");
+        const coll = db.collection("learnvideo");
+
+        const result = await coll.insertMany(videos);
+
+        console.log(result.insertedIds);
+
+    } finally {
+        await client.close();
+    }
+}
+
+
+export const videos = [
     {
         num: 1,
         title: "Is AI the future of humanity? - Artificial Intelligence and its Limitations",
         author: "DW Documentary",
         channel: "https://www.youtube.com/@DWDocumentary",
-        videolink: "https://www.youtube.com/watch?v=YZTutoSnXGc",
+        videolink: "https://www.youtube.com/embed/YZTutoSnXGc",
         description: "Artificial intelligence is often portrayed as the future of humanity. But is the logic of algorithms really infallible? Today, even programmers warn against overestimating AI. After all, artificial intelligence presents us with opportunities, but it also comes with risks.",
 
     },
@@ -37,7 +53,7 @@ const videos = [
         title: "What is AI? | Artificial Intelligence | What is Artificial Intelligence?",
         author: "Simplilearn",
         channel: "https://www.youtube.com/@SimplilearnOfficial",
-        videolink: "https://www.youtube.com/watch?v=ad79nYk2keg",
+        videolink: "https://www.youtube.com/embed/ad79nYk2keg",
         description: "This video on 'What is Artificial Intelligence' will give you a brief overview of artificial intelligence as a technology in just 5 minutes. We will start with a minor introduction to artificial intelligence in which we will know what is artificial intelligence with the help of examples. Moving ahead we will see what are the uses of AI, what is strong AI and what is weak AI. We will warp up this video by making you understand the major difference between AI ML and Deep Learning which will be followed by the future scope of artificial intelligence. ",
 
     },
@@ -46,8 +62,17 @@ const videos = [
         title: "How will AI change the world?",
         author: "TED-Ed",
         channel: "https://www.youtube.com/@TEDEd",
-        videolink: "https://www.youtube.com/watch?v=RzkD_rTEBYs",
+        videolink: "https://www.youtube.com/embed/RzkD_rTEBYs",
         description: "In the coming years, artificial intelligence is probably going to change your life— and likely the entire world. But people have a hard time agreeing on exactly how AI will affect our society. Can we build AI systems that help us fix the world? Or are we doomed to a robotic takeover? Explore the limitations of artificial intelligence and the possibility of creating human-compatible technology.",
+
+    },
+    {
+        num: 4,
+        title: "What is a Chatbot?",
+        author: "IBM Technology",
+        channel: "https://www.youtube.com/@IBMTechnology",
+        videolink: "https://www.youtube.com/embed/o9-ObGgfpEk",
+        description: "How do all the algorithms, like ChatGPT & Bing, around us learn to do their jobs?",
 
     },
     {
@@ -55,7 +80,7 @@ const videos = [
         title: "How AIs like ChatGPT, Learn",
         author: "CGP Grey",
         channel: "https://www.youtube.com/@CGPGrey",
-        videolink: "https://www.youtube.com/watch?v=R9OHn5ZF4Uo",
+        videolink: "https://www.youtube.com/embed/R9OHn5ZF4Uo",
         description: "How do all the algorithms, like ChatGPT & Bing, around us learn to do their jobs?",
 
     },
@@ -64,7 +89,7 @@ const videos = [
         title: "But how does ChatGPT Actually Work?",
         author: "Till Musshoff",
         channel: "https://www.youtube.com/@tillmusshoff",
-        videolink: "https://www.youtube.com/watch?v=aQguO9IeQWE",
+        videolink: "https://www.youtube.com/embed/aQguO9IeQWE",
         description: "ChatGPT is a type of natural language processing model (NLP) known as a Generative Pretrained Transformer (GPT) developed by OpenAI. These are the two big terms we will focus on in this video. On top of that you will also get a base understanding of common Machine Learning techniques like supervised learning, and reinforcement learning, which were used to make ChatGPT as good as it is.",
 
     },
@@ -73,7 +98,7 @@ const videos = [
         title: "The Turing Test: Can a Computer pass for a Human?",
         author: "Ted-Ed",
         channel: "https://www.youtube.com/@TEDEd",
-        videolink: "https://www.youtube.com/watch?v=3wLqsRLvV-c",
+        videolink: "https://www.youtube.com/embed/3wLqsRLvV-c",
         description: "What is consciousness? Can an artificial machine really think? For many, these have been vital considerations for the future of artificial intelligence. But British computer scientist Alan Turing decided to disregard all these questions in favor of a much simpler one: Can a computer talk like a human? Alex Gendler describes the Turing test and details some of its surprising results.",
 
     },
@@ -82,8 +107,10 @@ const videos = [
         title: "AI Vs Machine Learning",
         author: "IBM Technology",
         channel: "https://www.youtube.com/@IBMTechnology",
-        videolink: "https://www.youtube.com/watch?v=4RixMPF4xis",
+        videolink: "https://www.youtube.com/embed/4RixMPF4xis",
         description: "What is really the difference between Artificial intelligence (AI) and machine learning (ML)? Are they actually the same thing? In this video, Jeff Crume explains the differences and relationship between AI & ML, as well as how related topics like Deep Learning (DL) and other types and properties of each.",
 
     }
 ]
+
+

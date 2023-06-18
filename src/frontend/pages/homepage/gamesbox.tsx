@@ -1,6 +1,12 @@
+import path from 'path'
 import React from 'react'
 
-type Props = {}
+type Props = {
+  image: string,
+  gameDescription: string,
+  title: string,
+
+}
 
 const Gamesbox = (props: Props) => {
   return (

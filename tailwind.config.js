@@ -6,6 +6,14 @@ export default {
   ], 
   theme: {
     extend: {
+      aspectRatio: {
+        none: 0,
+        square: [1, 1],
+        "16/9": [16, 9],
+        "4/3": [4, 3],
+        "21/9": [21, 9]
+      },
+
       colors: {
         "gray-20": "#F8F4EB",
         "gray-50": "#EFE6E6",
@@ -19,6 +27,13 @@ export default {
       },
     },
   },
-  plugins: [],
+  variants: {
+    aspectRatio: ['responsive'],
+    extend: {},
+  }, 
+  plugins: [
+    require("tailwindcss-aspect-ratio"),
+    require("tailwindcss-responsive-embed"),
+  ],
 }
 
