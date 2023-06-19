@@ -15,6 +15,8 @@ import { verifyToken } from "./middleware/auth.js";
 import User from "./models/User.js"
 import { videos } from "../data/index.js";
 import { MongoClient } from "mongodb";
+import Video from "./models/Video.js";
+import axios from "axios";
 
 
 
@@ -50,6 +52,33 @@ app.post('/auth/register', upload.single("picture"), register);
 app.use("/auth", authRoutes);
 app.use("/users", userRoutes);
 
+/* GET ROUTES */
+
+
+app.get("/getVideos", async(req, res) => {
+    try {
+        const allVideos = await Video.find({});
+        res.send({ status: "ok", data: allVideos});
+        
+    } catch (error) {
+        console.log(error)
+        
+    }
+})
+
+app.get("/getVideos/:id", async(req, res) => {
+    try {
+        const { id } = req.params;
+        const videoSp = await Video.findById(id);
+        res.send({status: "ok", data: videoSp})
+
+    } catch (error) {
+        console.log(error)
+        
+    }
+})
+
+
 /* MONGOOSE SERUP */
 const PORT = process.env.PORT || 6001;
 mongoose.connect(process.env.MONGO_URL, {
@@ -78,4 +107,6 @@ mongoose.connect(process.env.MONGO_URL, {
 
 
 
-}).catch((error) => console.log(`${error} did not connect`))
+}).catch((error) => console.log(`${error} did not connect`));
+
+

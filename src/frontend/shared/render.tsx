@@ -21,9 +21,9 @@ const Rendering = () => {
         <Route path='/SignUp' element={<LoginForm />} /> {/* SIGN-IN PAGE */}
         <Route path='/BecomeAPlayer' /> {/* BECOME A PLAYER PAGE */}
         <Route path='/SignIn' element={<SignInForm />}/> {/* LOG-IN PAGE */}
-        <Route path="/Home" element={isAuth ? <HomePage /> : <Navigate to="/" />} />{/* HOME PAGE IN LOGIN */} 
+        <Route path="/Home/*" element={isAuth ? <HomePage /> : <Navigate to="/" />} />{/* HOME PAGE IN LOGIN */} 
         <Route path="/ProfilePage/:userId" element={isAuth ? <ProfilePage /> : <Navigate to="/" />} />{/* HOME PAGE IN LOGIN */} 
-        <Route path='/Video' element={<LearnVidPage />}/> {/* LOG-IN PAGE */}
+        <Route path='/Video/:videoId' element={<LearnVidPage />}/>
         <Route path='/About'/> {/* ABOUT PAGE */}
         <Route path='/Pot'/> {/* POT CHATBOT PAGE */}
         <Route path='*'/> {/* NOT FOUND PAGE */}

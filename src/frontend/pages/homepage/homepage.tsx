@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../../main'
 
-import Learn from './learn'
+import Learn from '../learn/learn'
 import About from './about'
 import Master from './master'
 import Chatbot from './games'
