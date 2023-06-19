@@ -9,6 +9,7 @@ import { RootState } from "../../main";
 import ProfilePage from "../pages/profilepage/profilepage";
 import HomePage from "../pages/homepage/homepage";
 import LearnVidPage from "../pages/learn/learnvideo";
+import WordScramble from "../pages/games/wordscramble/wordscramble";
 
 const Rendering = () => {
 
@@ -26,6 +27,10 @@ const Rendering = () => {
         <Route path='/Video/:videoId' element={<LearnVidPage />}/>
         <Route path='/About'/> {/* ABOUT PAGE */}
         <Route path='/Pot'/> {/* POT CHATBOT PAGE */}
+
+        <Route path='/Games/WordScramble' element={<WordScramble />}/> {/* ABOUT PAGE */}
+
+
         <Route path='*'/> {/* NOT FOUND PAGE */}
     </Routes>
   )
