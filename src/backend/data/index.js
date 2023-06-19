@@ -19,23 +19,7 @@ export const users = [
     }
 ]
 
-// const client = new MongoClient(MONGO_URL);
 
-
-async function insertData() {
-    try {
-        await client.connect();
-        const db = client.db("test");
-        const coll = db.collection("learnvideo");
-
-        const result = await coll.insertMany(videos);
-
-        console.log(result.insertedIds);
-
-    } finally {
-        await client.close();
-    }
-}
 
 
 export const videos = [
@@ -113,4 +97,12 @@ export const videos = [
     }
 ]
 
+
+export const WSWords = [
+    {
+        word: "",
+        hint: "",
+    },
+
+] 
 
