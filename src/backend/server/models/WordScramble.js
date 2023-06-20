@@ -2,8 +2,8 @@ import mongoose from "mongoose";
 
 const WordSCrambleWordSchema = new mongoose.Schema(
     {
-        word: string,
-        hint: string,
+        word: {type: String,},
+        hint: {type: String,},
     },
     {collection: "wswords"},
 )

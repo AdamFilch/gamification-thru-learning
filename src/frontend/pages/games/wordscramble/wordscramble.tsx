@@ -1,26 +1,32 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import CloseIcon from '@mui/icons-material/Close';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 
 type Props = {}
 
+type wordKey = {
+    word: String,
+    hint: String,
+    shuffle: String,
+}
+
 const WordScramble = (props: Props) => {
     const navigate = useNavigate();
 
-    // const [counter, setCounter] = React.useState(60);
 
-    // React.useEffect(() => { counter > 0 && setInterval(() => setCounter((time) => time - 1), 1000);
-    //   }, []);
-
-    const [seconds, setSeconds] = React.useState<number>(60);
-  const [toggle, setToggle] = React.useState<boolean>(true);
-
+    const [seconds, setSeconds] = useState<number>(60);
+  const [toggle, setToggle] = useState<boolean>(true);
+  const [word, setWord] = useState<wordKey>();
+  const [shuffled, setShuffled] = useState({
+    word: []
+  });
     const ref =React.useRef<NodeJS.Timeout | null>(null);
-    // const clear=()=>{
-    //     window.clearInterval(id.current)
-    // }
+    const [answer, setAnswer] = useState("");
+
     useEffect(() => {
+        initGame();
         if(seconds > 0) {
             ref.current = setInterval(() => {
                 if (toggle) setSeconds((state) => state - 1);
@@ -35,10 +41,62 @@ const WordScramble = (props: Props) => {
       }, [toggle]);
 
       useEffect(() => {
+        // getWords()
         if(seconds == 0) {
             setToggle(false)
         }
       })
+
+      const getWords = () => {
+        axios.get("http://localhost:3001/getWSW").then((res) => {
+          let data = res.data.data;
+          data = data[Math.floor(Math.random()*data.length)]
+          data = data as wordKey;
+          let wordArray = data.word.split("")
+          for (let i = wordArray.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1));
+            [wordArray[i], wordArray[j]] = [wordArray[j], wordArray[i]];
+        }
+        //   console.log(shed)
+          setWord(data);
+          setShuffled({word: wordArray});
+
+          // console.log("Data Received");
+        }).catch(() => {
+          alert('Error Received')
+        })
+        return null;
+      }
+
+      
+
+    const initGame = () => {
+        setAnswer("");
+        setToggle(true);
+        setSeconds(60);
+        getWords();
+        console.log(shuffled.word)
+
+        // let wordArray = word?.word.split("");
+        // console.log(wordArray)
+
+    }
+
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setAnswer(event.target.value)
+    } 
+
+    const checkWord = () => {
+        
+        const userWord = answer?.toString().toLowerCase().replace(/\s/g, "");
+        if(!userWord) return alert("Please enter the word to check!");
+        if(userWord !== word?.word) return alert(`Oops! ${userWord} is not a correct word`);
+        alert(`Congrats! ${word.word.toUpperCase()} is the correct word`);
+        initGame();
+
+
+        
+    }
 
   return (
     <div className='flex h-screen'>
@@ -47,15 +105,15 @@ const WordScramble = (props: Props) => {
         <div className='flex flex-col w-full'>
             <h2 className=' text-[28px] font-bold p-[20px] pb-[10px] border-b'>Word Scramble</h2>
             <div className=''>
-                <p className=' align-middle text-center p-9 tracking-[16px] text-[33px] font-semibold uppercase'>classification</p>
+                <p className=' align-middle text-center p-9 tracking-[16px] text-[33px] font-semibold uppercase'>{shuffled?.word}</p>
                 <div className='pb-4'>
-                    <p className=' text-[20px] pl-7'>Hint: <span>algorithm that has processed data to be able to use in production</span></p>
+                    <p className=' text-[20px] pl-7'>Hint: <span>{word?.hint}</span></p>
                     <p className='text-[20px] pl-7 pt-2'>Time left: <span><b>{seconds}</b>s</span></p>
                 </div>
-                    <input className='flex m-auto w-[90%] border p-5 center' placeholder='Enter a Valid word' />
+                    <input className='flex m-auto w-[90%] border p-5 center' value={answer} type='text' onInput={handleChange} spellCheck='false' placeholder='Enter a Valid word' />
                 <div className='flex flex-row justify-center align-middle p-6 space-x-[80px]'>
-                    <button className='p-[15px] border'>Refresh Word</button>
-                    <button className='p-[17px] border' onClick={() => setToggle(false)}>Check Word</button>
+                    <button className='p-[15px] border' onClick={() => initGame()}>Refresh Word</button>
+                    <button className='p-[17px] border' onClick={() => checkWord()}>Check Word</button>
                 </div>
             </div>
         </div>

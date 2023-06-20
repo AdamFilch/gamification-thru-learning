@@ -19,7 +19,7 @@ const Learn = (props: Props) => {
 
   useEffect(() => {
     getVideos();
-  })
+  }, [])
 
 
   const getVideos = () => {

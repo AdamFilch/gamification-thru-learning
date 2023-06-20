@@ -13,10 +13,10 @@ import userRoutes from "./routes/users.js"
 import { register } from "./controllers/auth.js";
 import { verifyToken } from "./middleware/auth.js";
 import User from "./models/User.js"
-import { videos } from "../data/index.js";
-import { MongoClient } from "mongodb";
+import { WSWords, videos } from "../data/index.js";
 import Video from "./models/Video.js";
 import axios from "axios";
+import WordScrambleWord from "./models/WordScramble.js";
 
 
 
@@ -61,8 +61,7 @@ app.get("/getVideos", async(req, res) => {
         res.send({ status: "ok", data: allVideos});
         
     } catch (error) {
-        console.log(error)
-        
+        console.log(error) 
     }
 })
 
@@ -78,6 +77,16 @@ app.get("/getVideos/:id", async(req, res) => {
     }
 })
 
+app.get("/getWSW", async(req, res) => {
+    try {
+        const words = await WordScrambleWord.find({});
+        res.send({ status: "ok", data: words});
+        
+    } catch (error) {
+        console.log(error) 
+    }
+})
+
 
 /* MONGOOSE SERUP */
 const PORT = process.env.PORT || 6001;
@@ -89,18 +98,13 @@ mongoose.connect(process.env.MONGO_URL, {
 
     // Insert Data one time
     // try {
-    //     var MongoClient = require('mongodb').MongoClient;
-    //     const client = MongoClient(MONGO_URL);
-    //     const db = client.db("test");
-    //     const coll = db.collection("learnvideo");
 
-    //     const result = coll.insertMany(videos);
+    //     // WordScrambleWord.insertMany(WSWords);
 
-    //     console.log(result.insertedIds);
         
 
     // } finally {
-    //     client.close();
+    //     // client.close();
     //     console.log("Done")
     // }
     

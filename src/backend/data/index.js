@@ -105,11 +105,11 @@ export const WSWords = [
     },
     {
         word: "artificial",
-        hint: "",
+        hint: "created; not natural",
     },
     {
         word: "intelligence",
-        hint: "",
+        hint: "ability to acquire knowledge",
     },
     {
         word: "chatbot",

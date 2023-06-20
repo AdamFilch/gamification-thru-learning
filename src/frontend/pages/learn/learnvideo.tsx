@@ -31,7 +31,7 @@ const LearnVidPage = ({}: Props) => {
 
   useEffect(() => {
     getVideo();
-  })
+  },[])
 
   const [video, setVideo] = useState<videoKey>();
   const getVideo = () => {
