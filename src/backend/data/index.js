@@ -100,9 +100,66 @@ export const videos = [
 
 export const WSWords = [
     {
-        word: "",
+        word: "algorithm",
+        hint: "set of instructions or rules machines follow to solve a problem or accomplish a task.",
+    },
+    {
+        word: "artificial",
         hint: "",
     },
+    {
+        word: "intelligence",
+        hint: "",
+    },
+    {
+        word: "chatbot",
+        hint: "program that simulate conversations with humans",
+    },
+    {
+        word: "classification",
+        hint: "a technique to assign a set of predefined categories",
+    },
+    {
+        word: "linguistics",
+        hint: "a field concerning of natural language",
+    },
+    {
+        word: "recognition",
+        hint: "ability to identify",
+    },
+    {
+        word: "machine",
+        hint: "a system able to perform tasks and actions",
+    },
+    {
+        word: "model",
+        hint: "algorithm that has processed data to be able to use in production",
+    },
+    {
+        word: "training",
+        hint: "action of teaching",
+    },
+    {
+        word: "program",
+        hint: "a series of software instructions",
+    },
+    {
+        word: "prediction",
+        hint: "a calculated guess about data",
+    },
+    {
+        word: "decision",
+        hint: "action of concluding after consideration",
+    },
+    {
+        word: "precision",
+        hint: "a percentage Value that indicates how many of the results are correct",
+    },
+    {
+        word: "semantics",
+        hint: "a study of the meaning of words and sentences",
+    },
+    
 
 ] 
 
