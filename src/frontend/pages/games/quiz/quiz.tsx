@@ -3,6 +3,10 @@ import React, { useEffect, useState } from 'react'
 
 type Props = {}
 
+type questionKey = {
+    
+}
+
 const Quiz = (props: Props) => {
     
     let questionOrder: object[] = []
