@@ -13,10 +13,11 @@ import userRoutes from "./routes/users.js"
 import { register } from "./controllers/auth.js";
 import { verifyToken } from "./middleware/auth.js";
 import User from "./models/User.js"
-import { WSWords, videos } from "../data/index.js";
+import { QQuestions, WSWords, videos } from "../data/index.js";
 import Video from "./models/Video.js";
 import axios from "axios";
 import WordScrambleWord from "./models/WordScramble.js";
+import Quiz from "./models/Quiz.js";
 
 
 
@@ -87,6 +88,16 @@ app.get("/getWSW", async(req, res) => {
     }
 })
 
+app.get("/getQuestions", async(req, res) => {
+    try {
+        const allQuestions = await Quiz.find({});
+        res.send({ status: "ok", data: allQuestions});
+        
+    } catch (error) {
+        console.log(error) 
+    }
+})
+
 
 /* MONGOOSE SERUP */
 const PORT = process.env.PORT || 6001;
@@ -97,16 +108,16 @@ mongoose.connect(process.env.MONGO_URL, {
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
 
     // Insert Data one time
-    // try {
+    try {
 
-    //     // WordScrambleWord.insertMany(WSWords);
-
+        // WordScrambleWord.insertMany(WSWords);
+        // Quiz.insertMany(QQuestions);
         
 
-    // } finally {
-    //     // client.close();
-    //     console.log("Done")
-    // }
+    } finally {
+        // client.close();
+        console.log("Done")
+    }
     
 
 
