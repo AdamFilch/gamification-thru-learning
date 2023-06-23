@@ -10,6 +10,7 @@ import ProfilePage from "../pages/profilepage/profilepage";
 import HomePage from "../pages/homepage/homepage";
 import LearnVidPage from "../pages/learn/learnvideo";
 import WordScramble from "../pages/games/wordscramble/wordscramble";
+import Quiz from "../pages/games/quiz/quiz";
 
 const Rendering = () => {
 
@@ -28,8 +29,8 @@ const Rendering = () => {
         <Route path='/About'/> {/* ABOUT PAGE */}
         <Route path='/Pot'/> {/* POT CHATBOT PAGE */}
 
-        <Route path='/Games/WordScramble' element={<WordScramble />}/> {/* ABOUT PAGE */}
-
+        <Route path='/Games/WordScramble' element={<WordScramble />}/>
+        <Route path='/Games/Quiz' element={<Quiz />}/>
 
         <Route path='*'/> {/* NOT FOUND PAGE */}
     </Routes>

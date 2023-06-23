@@ -12,7 +12,7 @@ type Props = {
 const Gamesbox = (props: Props) => {
   const navigate = useNavigate();
   return (
-    <button className={ ` border-4  text-zinc-950 hover:text-slate-200 hover:bg-slate-900 `} onClick={() => navigate("/Games/WordScramble") }>
+    <button className={ ` border-4  text-zinc-950 hover:text-slate-200 hover:bg-slate-900 `} onClick={() => navigate("/Games/Quiz") }>
         <div className='w-[350px] h-[300px]'>
             IMAGE
         </div>

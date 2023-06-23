@@ -163,3 +163,78 @@ export const WSWords = [
 
 ] 
 
+export const QQuestions = [
+    {
+        question: "What is the full form of AI?",
+        options: [
+            {option: "Advanced Intelligence", answer: false},
+            {option: "Artificial Intelligence", answer: true},
+            {option: "Artificially Intelligent", answer: false},
+            {option: "Anonymous Incognito", answer: false},
+        ],
+    },
+    {
+        question: "Who designed the Turing Test?",
+        options: [
+            {option: "Andrew Ng", answer: false},
+            {option: "Micheal Jordan", answer: false},
+            {option: "Alan Turing", answer: true},
+            {option: "Beyonce", answer: false},
+        ],
+    },
+    {
+        question: "What is NOT an application of Artificial Intelligence",
+        options: [
+            {option: "Expert System", answer: false},
+            {option: "Face Recognition", answer: false},
+            {option: "Chatbots", answer: false},
+            {option: "Database Management System", answer: true},
+        ],
+    },
+    {
+        question: "A Technique used to determine whether a machine is intelligent?",
+        options: [
+            {option: "Beep Test", answer: false},
+            {option: "Turing Test", answer: true},
+            {option: "Black Box Test", answer: false},
+            {option: "Math Test", answer: false},
+        ],
+    },
+    {
+        question: "What are the components of an Expert System?",
+        options: [
+            {option: "Inference Base", answer: false},
+            {option: "Knowledge Base", answer: false},
+            {option: "User Interface", answer: false},
+            {option: "All of the above", answer: true},
+        ],
+    },
+    {
+        question: "Which is considered a branch of AI?",
+        options: [
+            {option: "Full Stack Development", answer: false},
+            {option: "Cyber Security", answer: false},
+            {option: "IoT", answer: false},
+            {option: "Machine Learning", answer: true},
+        ],
+    },
+    {
+        question: "What is the Aim of Artificial Intelligence?",
+        options: [
+            {option: "To solve real-world problems", answer: true},
+            {option: "To explain what is meant by intelligence", answer: false},
+            {option: "To solve artificial problems", answer: false},
+            {option: "To create more problems", answer: false},
+        ],
+    },
+    {
+        question: "Which of these categories are part of Machine Learning?",
+        options: [
+            {option: "Supervies Learning", answer: false},
+            {option: "Unsupervised Learning", answer: false},
+            {option: "Reinforced Learning", answer: false},
+            {option: "All of thte above", answer: true},
+        ],
+    }
+]
+

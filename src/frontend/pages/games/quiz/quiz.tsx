@@ -4,12 +4,17 @@ import React, { useEffect, useState } from 'react'
 type Props = {}
 
 type questionKey = {
-    
+    question: string,
+    options: [{
+        option: string,
+        answer: boolean,
+}],
+
 }
 
 const Quiz = (props: Props) => {
     
-    let questionOrder: object[] = []
+    let questionOrder: questionKey[] = []
 
     useEffect(() => {
         getQuestions();
@@ -25,7 +30,9 @@ const Quiz = (props: Props) => {
             let j = Math.floor(Math.random() * (i + 1));
             [dataArray[i], dataArray[j]] = [dataArray[j], dataArray[i]];
         }
-          questionOrder = dataArray;
+          questionOrder = dataArray as questionKey[];
+          setCurrentQuestionNo(0);
+          setCurrentQuestion(questionOrder[currentQuestionNo])
 
         }).catch(() => {
           alert('Error Received')
@@ -34,8 +41,8 @@ const Quiz = (props: Props) => {
       }
 
 
-    
-    const [currentQuestion, setCurrentQuestion] = useState(0);
+    const [currentQuestionNo, setCurrentQuestionNo] = useState(0);
+    const [currentQuestion, setCurrentQuestion] = useState<questionKey>();
     // const [nextQuestion, setNextQuestion] = useState()
     const [showScore, setShowScore] = useState(false);
     const [score, setScore] = useState(0);
@@ -46,7 +53,7 @@ const Quiz = (props: Props) => {
         if(answer) {
             setScore(score + 1);
         }
-        const nextQuestion = questionOrder[currentQuestion + 1];
+        // const nextQuestion = questionOrder[currentQuestion + 1];
         if(i < questionOrder.length) {
             
         } else {
@@ -63,16 +70,16 @@ const Quiz = (props: Props) => {
                 <div>
                     <div>
                         <div>
-                            <span>Question 3/</span>10
+                            <span>Question {currentQuestionNo + 1}/</span>10
                         </div>
-                        <p>{}</p>
+                        <div>{currentQuestion?.question}</div>
                     </div>
                     <div>
                         <div>
-                            <button>Me</button>
-                            <button>Elon Musk</button>
-                            <button>Ryan Renolds</button>
-                            <button>yo act dad</button>
+                            {currentQuestion?.options.map((option) => (
+                                <button>{option.option}</button>
+
+                            ))};
                         </div>
                     </div>
                 </div>
