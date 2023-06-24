@@ -81,8 +81,9 @@ const Quiz = (props: Props) => {
                     </div>
                     <div className='flex m-auto'>
                         <div className='inline-flex flex-col space-y-5'>
+                            {}
                             {currentQuestion?.options.map((option) => (
-                                <button className='border text-lg h-[70px] w-[300px]' onClick={() => AnswerOptionsClick(option.answer)}>{option.option}</button>
+                                <button className='border text-lg h-[70px] w-[300px] hover:text-slate-200 hover:bg-slate-900' onClick={() => AnswerOptionsClick(option.answer)}>{option.option}</button>
 
                             ))}
                         </div>
