@@ -1,14 +1,16 @@
 import React from 'react'
 import { ChartBarIcon, MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
+import { useNavigate } from 'react-router-dom';
 
 
 type Props = {
     content: number;
     label: string;
+    nav: string;
 
 }
 
-const AddDel = ({content, label,}: Props) => {
+const AddDel = ({content, label, nav}: Props) => {
     const contentDecider = (content: number) => {
         switch(content) {
             case 1:
@@ -31,9 +33,10 @@ const AddDel = ({content, label,}: Props) => {
         }
     }
 
+    const navigate = useNavigate();
 
   return (
-    <button className='w-[150px] h-[150px] text-zinc-950 hover:text-slate-200 hover:bg-slate-900'>
+    <button className='w-[150px] h-[150px] text-zinc-950 hover:text-slate-200 hover:bg-slate-900' onClick={() => navigate(nav)}>
         {contentDecider(content)}
     </button>
   )

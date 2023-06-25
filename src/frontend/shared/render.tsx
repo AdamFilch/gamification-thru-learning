@@ -11,6 +11,7 @@ import HomePage from "../pages/homepage/homepage";
 import LearnVidPage from "../pages/learn/learnvideo";
 import WordScramble from "../pages/games/wordscramble/wordscramble";
 import Quiz from "../pages/games/quiz/quiz";
+import {Addlearn} from "../pages/master/addlearn";
 
 const Rendering = () => {
 
@@ -28,6 +29,8 @@ const Rendering = () => {
         <Route path='/Video/:videoId' element={<LearnVidPage />}/>
         <Route path='/About'/> {/* ABOUT PAGE */}
         <Route path='/Pot'/> {/* POT CHATBOT PAGE */}
+
+        <Route path='/AddALearn' element={<Addlearn />}/>
 
         <Route path='/Games/WordScramble' element={<WordScramble />}/>
         <Route path='/Games/Quiz' element={<Quiz />}/>
