@@ -12,6 +12,7 @@ import LearnVidPage from "../pages/learn/learnvideo";
 import WordScramble from "../pages/games/wordscramble/wordscramble";
 import Quiz from "../pages/games/quiz/quiz";
 import {Addlearn} from "../pages/master/addlearn";
+import Dellearn from "../pages/master/dellearn";
 
 const Rendering = () => {
 
@@ -31,6 +32,7 @@ const Rendering = () => {
         <Route path='/Pot'/> {/* POT CHATBOT PAGE */}
 
         <Route path='/AddALearn' element={<Addlearn />}/>
+        <Route path='/DeleteALearn' element={<Dellearn />}/>
 
         <Route path='/Games/WordScramble' element={<WordScramble />}/>
         <Route path='/Games/Quiz' element={<Quiz />}/>

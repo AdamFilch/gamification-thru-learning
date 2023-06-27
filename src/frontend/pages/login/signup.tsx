@@ -79,10 +79,6 @@ const LoginForm = () => {
     const savedUserResponse = axios.post("http://localhost:3001/auth/register", values).then(res => {
       console.log(res.data)  
     });
-
-
-
-
   }
 
 

@@ -18,6 +18,7 @@ import Video from "./models/Video.js";
 import axios from "axios";
 import WordScrambleWord from "./models/WordScramble.js";
 import Quiz from "./models/Quiz.js";
+import { uploadLearn } from "./controllers/videos.js";
 
 
 
@@ -48,6 +49,8 @@ const upload = multer({ storage });
 
 // /* ROUTES WITH FILES */
 app.post('/auth/register', upload.single("picture"), register);
+
+app.post('/video/post', uploadLearn);
 
 /* ROUTES */
 app.use("/auth", authRoutes);

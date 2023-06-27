@@ -10,7 +10,7 @@ const Master = (props: Props) => {
             <span className=' text-center text-[24px] pb-4'>Add a learn Video/Document</span>
             <div className=' flex flex-row m-auto space-x-16'>
                 <AddDel content={1} label='Add a Learn post' nav='/AddALearn'/>
-                <AddDel content={2} label='Add a Learn post' nav='/AddALearn'/>
+                <AddDel content={2} label='Delete a Learn post' nav='/DeleteALearn'/>
                 
             </div>
         </div>

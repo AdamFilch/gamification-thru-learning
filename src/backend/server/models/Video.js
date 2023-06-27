@@ -6,7 +6,7 @@ const VideoSchema = new mongoose.Schema(
             type: Number,
 
         },
-        tilte: {
+        title: {
             type: String,
 
         },
