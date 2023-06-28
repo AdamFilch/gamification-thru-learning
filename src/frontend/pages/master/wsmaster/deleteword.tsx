@@ -39,7 +39,7 @@ const WSDeleteWord = (props: Props) => {
     const deleteSelectedWord = async (word: wordKey) => {
         
         // console.log(video);
-        await axios.post("http://localhost:3001/WS/Word/delete", word).then(res => {
+        await axios.post("http://localhost:3001/WS/word/delete", word).then(res => {
             console.log(res);
         }).then((data) => {
             setToDelete([]);
@@ -50,7 +50,7 @@ const WSDeleteWord = (props: Props) => {
 
     const handleConfirm = () => {
         
-        // toDelete.forEach(deleteSelectedWord);
+        toDelete.forEach(deleteSelectedWord);
         console.log(toDelete);
     }
 
@@ -75,7 +75,7 @@ const WSDeleteWord = (props: Props) => {
             setToDelete(toDelete => [...toDelete, data]);
             // console.log("false");
         }
-        console.log(toDelete);
+        // console.log(toDelete);
 
         
     }
@@ -92,8 +92,7 @@ const WSDeleteWord = (props: Props) => {
                 {values.map((words) => (
                     <DeleteWSWordBox key={words._id} {...words} onToggle={handleToggle}/>
                 ))}
-                
-            <button className='w-[200px] h-[50px] border font-bold text-xl rounded-md bg-gray-200 group-invalid:pointer-events-none group-invalid:opacity-30'  type="submit" >Confirm Delete<span> {`(`}{toDelete.length}{`)`}</span></button>
+            <button className='w-[200px] h-[50px] border font-bold text-xl rounded-md bg-gray-200 group-invalid:pointer-events-none group-invalid:opacity-30' onClick={handleConfirm} type="submit" >Confirm Delete<span> {`(`}{toDelete.length}{`)`}</span></button>
             </div>
         <div className='pt-10'></div>
     </div>

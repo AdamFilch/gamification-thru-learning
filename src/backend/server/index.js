@@ -22,6 +22,7 @@ import { deleteLearn, uploadLearn } from "./controllers/videos.js";
 
 
 
+
 /* CONFIGURATIONS (MIDDLE WARE) */
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -51,6 +52,8 @@ const upload = multer({ storage });
 app.post('/auth/register', upload.single("picture"), register);
 
 app.post('/video/post', uploadLearn);
+
+
 app.use('/video/delete', async (req, res) => {
     try {
         const {
@@ -76,6 +79,29 @@ app.use('/video/delete', async (req, res) => {
         console.log(newVideo._id);
         const deletedVid = await Video.findByIdAndDelete(newVideo._id);
         res.send({status: "ok", data: "deleted"});
+         
+    } catch (err) {
+        console.log(err);
+    }
+});
+
+app.use('/WS/word/delete', async (req, res) => {
+    try {
+        const {
+            _id,
+            word,
+            hint,
+        } = req.body;
+
+        const DelWord = new WordScrambleWord({
+            _id,
+            word,
+            hint,
+        })
+
+        console.log(DelWord._id);
+        const deletedWord = await WordScrambleWord.findByIdAndDelete({_id: DelWord._id})
+        res.send({status: "ok", data: "deleted"})
          
     } catch (err) {
         console.log(err);
