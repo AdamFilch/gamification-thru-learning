@@ -45,7 +45,6 @@ const WSDeleteWord = (props: Props) => {
             setToDelete([]);
             getWords();
         })
-        
     }
 
     const handleConfirm = () => {

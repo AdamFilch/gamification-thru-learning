@@ -21,7 +21,7 @@ const DeleteWSWordBox = ({onToggle, ...words}: Props) => {
         setToggle(!toggle);
         onToggle(word);
     
-      }
+    }
 
 
 

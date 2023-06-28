@@ -19,6 +19,9 @@ import axios from "axios";
 import WordScrambleWord from "./models/WordScramble.js";
 import Quiz from "./models/Quiz.js";
 import { deleteLearn, uploadLearn } from "./controllers/videos.js";
+import { uploadWSWord } from "./controllers/gws.js";
+import { deleteQQuestion } from "./controllers/gq.js";
+
 
 
 
@@ -52,7 +55,9 @@ const upload = multer({ storage });
 app.post('/auth/register', upload.single("picture"), register);
 
 app.post('/video/post', uploadLearn);
+app.post('/WS/word/post', uploadWSWord);
 
+app.post('/Q/question/delete', deleteQQuestion);
 
 app.use('/video/delete', async (req, res) => {
     try {

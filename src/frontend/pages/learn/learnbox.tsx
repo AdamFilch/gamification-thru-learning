@@ -33,7 +33,7 @@ function Learnbox({ ...videos}: Props) {
   return (
     <button>
 
-      <div className={` group inline-flex border-4 box-border h-[80px] w-[1000px] text-zinc-950 hover:text-slate-200 hover:bg-slate-900`} onClick={() => navigate(`/Video/${video._id}`) } >
+      <div className={` group inline-flex border-2 box-border border-neutral-800 h-[80px] w-[1000px] text-zinc-950 hover:text-slate-200 hover:bg-slate-900`} onClick={() => navigate(`/Video/${video._id}`) } >
         <div className='flex items-center align-middle p-8'>
           ICON
         </div>

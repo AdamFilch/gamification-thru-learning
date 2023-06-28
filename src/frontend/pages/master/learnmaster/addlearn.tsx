@@ -71,10 +71,24 @@ export const Addlearn = (props: Props) => {
     setValues({ ...values, [event.target.name]: event.target.value})
   }
 
+  const onChangeT = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setValues({ ...values, [event.target.name]: event.target.value})
+  }
+
   const addNewLearn = () => {
     const savedVideoResponse = axios.post("http://localhost:3001/video/post", values as unknown as keyof vidKeyUpl).then(res => {
       console.log(res.data);
     })
+    setValues({
+      num: "",
+      title: "",
+      author: "",
+      channel: "",
+      videolink: "",
+      description: "",
+    })
+    setVideoLink("");
+    setIsValidVideo(false);
 
   }
 
@@ -88,10 +102,6 @@ export const Addlearn = (props: Props) => {
     } else {
       console.log("false")
     }
-
-    
-
-
   }
 
 
@@ -99,6 +109,7 @@ export const Addlearn = (props: Props) => {
   const remakeVideo = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValues({...values, [event.target.name]: event.target.value});
     var urlToParse = event.target.value;
+    setVideoLink(urlToParse)
     
     const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
     const match = urlToParse.match(regExp);
@@ -107,7 +118,7 @@ export const Addlearn = (props: Props) => {
     
       setIsValidVideo(true);
       var videoUrl = 'https://www.youtube.com/embed/' + match[2];
-      setVideoLink(videoUrl);
+      setVideoLink(urlToParse);
       setValues({...values, [event.target.name]: videoUrl});
     } else {
       setIsValidVideo(false);
@@ -124,8 +135,8 @@ export const Addlearn = (props: Props) => {
         <div>
       { isValidVideo ? (
         <div className='space-y-10 flex flex-col '>
-          <iframe width="560" height="315" src={videoLink} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
-          <iframe className=' m-auto' width="280" height="158" src={videoLink} title="YouTube video player" ></iframe>
+          <iframe width="560" height="315" src={values.videolink} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+          <iframe className=' m-auto' width="280" height="158" src={values.videolink} title="YouTube video player" ></iframe>
 
         </div>
       ) :
@@ -141,13 +152,13 @@ export const Addlearn = (props: Props) => {
           <div className='flex flex-col '>
             <form onSubmit={handleSubmit} noValidate>
               <div className='flex flex-col space-y-7'>
-                <input className='bg-zinc-100 border rounded-md h-[50px] peer w-[500px] invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-500' name='videolink' type='text' value={values.videolink} onInput={remakeVideo} placeholder='Enter a valid Video Link Here'/>
+                <input className='bg-zinc-100 border rounded-md h-[50px] peer w-[500px] invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-500' name='videolink' type='text' value={videoLink} onInput={remakeVideo} placeholder='Enter a valid Video Link Here'/>
                 <input className='bg-zinc-100 border rounded-md h-[50px] peer w-[500px] invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-500'  name='channel' type='text' value={values.channel} onInput={onChange} placeholder="Enter the video author's channel/website"/>
               </div>
               <div className='flex flex-col space-y-7 pt-7'>
                 <input  className='bg-zinc-100 border rounded-md h-[50px] peer w-[500px] invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-500' name='title' type='text' value={values.title} onInput={onChange} placeholder='Enter Video title'/>
                 <input className='bg-zinc-100 border rounded-md h-[50px] peer w-[500px] invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-500'  name='author' type='text' value={values.author} onInput={onChange} placeholder="Enter Author's Name" />
-                <input className='bg-zinc-100 border rounded-md h-[200px] peer w-[500px] invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-500'  name='description' type='text' value={values.description} onInput={onChange} placeholder='Enter a Description' />
+                <textarea className='bg-zinc-100 border rounded-md h-[200px] peer w-[500px] invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-500'  name='description' value={values.description} onChange={onChangeT} placeholder='Enter a Description' />
               </div>
               <div className='pt-8'>
 

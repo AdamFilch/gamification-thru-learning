@@ -14,6 +14,9 @@ import Quiz from "../pages/games/quiz/quiz";
 import {Addlearn} from "../pages/master/learnmaster/addlearn";
 import Dellearn from "../pages/master/learnmaster/dellearn";
 import WSDeleteWord from "../pages/master/wsmaster/deleteword";
+import WSAddWord from "../pages/master/wsmaster/addword";
+import QDeletecard from "../pages/master/quizmaster/deletequiz";
+import QAddQuestion from "../pages/master/quizmaster/addquiz";
 
 const Rendering = () => {
 
@@ -35,7 +38,11 @@ const Rendering = () => {
         <Route path='/AddALearn' element={<Addlearn />}/>
         <Route path='/DeleteALearn' element={<Dellearn />}/>
 
+        <Route path='/WS/AddAWord' element={<WSAddWord />}/>
         <Route path='/WS/DeleteAWord' element={<WSDeleteWord />}/>
+
+        <Route path='/Q/AddACard' element={<QAddQuestion />}/>
+        <Route path='/Q/DeleteACard' element={<QDeletecard />}/>
 
 
         <Route path='/Games/WordScramble' element={<WordScramble />}/>
