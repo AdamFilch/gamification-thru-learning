@@ -29,3 +29,34 @@ export const uploadLearn = async (req,res) => {
     }
 
 };
+
+export const deleteLearn = async (req, res) => {
+    try {
+        const {
+            _id,
+            num,
+            title,
+            author,
+            channel,
+            videolink,
+            description,
+        } = req.body;
+
+        const newVideo = new Video({
+            _id,
+            num,
+            title,
+            author,
+            channel,
+            videolink,
+            description,
+        })
+
+        console.log(newVideo._id);
+        const deletedVid = await Video.findByIdAndDelete({_id: newVideo._id})
+        res.send({status: "ok", data: "deleted"})
+         
+    } catch (err) {
+        console.log(err);
+    }
+}

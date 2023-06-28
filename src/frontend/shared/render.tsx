@@ -11,8 +11,9 @@ import HomePage from "../pages/homepage/homepage";
 import LearnVidPage from "../pages/learn/learnvideo";
 import WordScramble from "../pages/games/wordscramble/wordscramble";
 import Quiz from "../pages/games/quiz/quiz";
-import {Addlearn} from "../pages/master/addlearn";
-import Dellearn from "../pages/master/dellearn";
+import {Addlearn} from "../pages/master/learnmaster/addlearn";
+import Dellearn from "../pages/master/learnmaster/dellearn";
+import WSDeleteWord from "../pages/master/wsmaster/deleteword";
 
 const Rendering = () => {
 
@@ -33,6 +34,9 @@ const Rendering = () => {
 
         <Route path='/AddALearn' element={<Addlearn />}/>
         <Route path='/DeleteALearn' element={<Dellearn />}/>
+
+        <Route path='/WS/DeleteAWord' element={<WSDeleteWord />}/>
+
 
         <Route path='/Games/WordScramble' element={<WordScramble />}/>
         <Route path='/Games/Quiz' element={<Quiz />}/>

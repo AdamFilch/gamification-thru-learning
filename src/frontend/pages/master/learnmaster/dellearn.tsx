@@ -18,9 +18,7 @@ type videoKey = {
     description: string,
 }
 
-type videosType = {
-    videos: videoKey,
-  }
+
 
 const Dellearn = (props: Props) => {
     const navigate = useNavigate();
@@ -48,9 +46,26 @@ const Dellearn = (props: Props) => {
         return null;
     }
 
+    const deleteSelectedLearn = async (video: videoKey) => {
+        
+        console.log(video);
+        await axios.post("http://localhost:3001/video/delete", video).then(res => {
+            console.log(res);
+        }).then((data) => {
+            setToDelete([]);
+            getVideos();
+        })
+        
+    }
+
+    const handleConfirm = () => {
+        
+        toDelete.forEach(deleteSelectedLearn);
+        console.log(toDelete);
+    }
+
     const handleToggle = (data: videoKey) => {
-        // console.log(data);
-        // console.log(values);
+
 
         if (toDelete.some(element => {
             if(element._id === data._id) {
@@ -63,7 +78,7 @@ const Dellearn = (props: Props) => {
             var arr = toDelete.filter(el => el._id !== data._id);
             // console.log(arr);
             
-            console.log("true")
+            // console.log("true")
             setToDelete(arr);
             // console.log(toDelete);
         } else {
@@ -71,14 +86,8 @@ const Dellearn = (props: Props) => {
             // console.log("false");
         }
 
-        console.log(toDelete);
         
-
-
-
     }
-
-
 
 
 
@@ -89,9 +98,9 @@ const Dellearn = (props: Props) => {
                 <div className=' flex-col space-y-10 flex items-center'>
                 
                 {values.map((videos) => (
-                    <Dellearnbox {...videos} onToggle={handleToggle} />          
+                    <Dellearnbox key={videos._id} {...videos} onToggle={handleToggle} />          
                 ))}
-            <button className='w-[200px] h-[50px] border font-bold text-xl rounded-md bg-gray-200 group-invalid:pointer-events-none group-invalid:opacity-30' type="submit" >Confirm Delete<span> {`(`}{toDelete.length}{`)`}</span></button>
+            <button className='w-[200px] h-[50px] border font-bold text-xl rounded-md bg-gray-200 group-invalid:pointer-events-none group-invalid:opacity-30' onClick={handleConfirm} type="submit" >Confirm Delete<span> {`(`}{toDelete.length}{`)`}</span></button>
             </div>
             <div className='pt-10'></div>
         </div>

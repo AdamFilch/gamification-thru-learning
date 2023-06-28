@@ -18,7 +18,7 @@ const Master = (props: Props) => {
             <span className=' text-center text-[24px]  pb-4'>Add a word to Word Scramble</span>
             <div className=' flex flex-row m-auto space-x-16'>
                 <AddDel content={1} label='Add a Word' nav='/AddALearn'/>
-                <AddDel content={2} label='Delete a Word' nav='/AddALearn'/>
+                <AddDel content={2} label='Delete a Word' nav='/WS/DeleteAWord'/>
                 <AddDel content={3} label='Add a Learn post' nav='/AddALearn'/>
             </div>
         </div>

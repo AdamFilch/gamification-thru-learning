@@ -72,17 +72,9 @@ export const Addlearn = (props: Props) => {
   }
 
   const addNewLearn = () => {
-    // const formData = new FormData();
-    // for (let value in values) {
-    //   formData.append(value, values[value as keyof vidKeyUpl])
-    // }
-    // console.log(values[value as keyof vidKeyUpl]);
-
     const savedVideoResponse = axios.post("http://localhost:3001/video/post", values as unknown as keyof vidKeyUpl).then(res => {
       console.log(res.data);
     })
-
-
 
   }
 

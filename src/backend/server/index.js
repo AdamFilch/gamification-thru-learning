@@ -18,7 +18,7 @@ import Video from "./models/Video.js";
 import axios from "axios";
 import WordScrambleWord from "./models/WordScramble.js";
 import Quiz from "./models/Quiz.js";
-import { uploadLearn } from "./controllers/videos.js";
+import { deleteLearn, uploadLearn } from "./controllers/videos.js";
 
 
 
@@ -51,6 +51,36 @@ const upload = multer({ storage });
 app.post('/auth/register', upload.single("picture"), register);
 
 app.post('/video/post', uploadLearn);
+app.use('/video/delete', async (req, res) => {
+    try {
+        const {
+            _id,
+            num,
+            title,
+            author,
+            channel,
+            videolink,
+            description,
+        } = req.body;
+
+        const newVideo = new Video({
+            _id,
+            num,
+            title,
+            author,
+            channel,
+            videolink,
+            description,
+        })
+
+        console.log(newVideo._id);
+        const deletedVid = await Video.findByIdAndDelete(newVideo._id);
+        res.send({status: "ok", data: "deleted"});
+         
+    } catch (err) {
+        console.log(err);
+    }
+});
 
 /* ROUTES */
 app.use("/auth", authRoutes);
@@ -112,7 +142,7 @@ mongoose.connect(process.env.MONGO_URL, {
 
     // Insert Data one time
     try {
-
+        // Video.insertMany(videos)
         // WordScrambleWord.insertMany(WSWords);
         // Quiz.insertMany(QQuestions);
         
