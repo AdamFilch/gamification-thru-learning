@@ -3,6 +3,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import Learnbox from './learnbox';
+import CommentSection from './commentsection.tsx/comsec';
 
 
 type Props = {
@@ -16,13 +17,15 @@ interface idKey {
 
 type videoKey = {
   _id: string,
-  id: number,
-  num: number,
+  num: string,
   title: string,
   author: string,
   channel: string,
   videolink: string,
   description: string,
+  comments: [
+    
+  ],
 }
 
 const LearnVidPage = ({}: Props) => {
@@ -31,6 +34,7 @@ const LearnVidPage = ({}: Props) => {
 
   useEffect(() => {
     getVideo();
+
   },[])
 
   const [video, setVideo] = useState<videoKey>();
@@ -39,7 +43,7 @@ const LearnVidPage = ({}: Props) => {
     axios.get(`http://localhost:3001/getVideos/${videoId.videoId}`).then((res) => {
       let data:videoKey = res.data.data;
       setVideo(data)
-      // console.log(data);
+      console.log(data);
       
       
     }).catch(() => {
@@ -70,7 +74,7 @@ const LearnVidPage = ({}: Props) => {
         </h2>
 
         <div className='flex flex-col items-center pb-10'>
-
+          <CommentSection idv={video?._id as string} {...video}/>
         </div>
         
     </div>
