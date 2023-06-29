@@ -6,6 +6,13 @@ import axios from 'axios';
 
 type Props = {}
 
+type comments = {
+  author: string,
+  comment: string,
+  date: string,
+  replies: []
+}
+
 type videoKey = {
   _id: string,
   id: number,
@@ -15,6 +22,7 @@ type videoKey = {
   channel: string,
   videolink: string,
   description: string,
+  comments: comments,
 }
 
 type vidKeyUpl = {
@@ -24,6 +32,7 @@ type vidKeyUpl = {
   channel: string,
   videolink: string,
   description: string,
+  comments: comments,
 }
 
 export const Addlearn = (props: Props) => {
@@ -46,6 +55,7 @@ export const Addlearn = (props: Props) => {
     channel: "",
     videolink: "",
     description: "",
+    comments: [],
   });
 
   useEffect(() => {
@@ -86,6 +96,7 @@ export const Addlearn = (props: Props) => {
       channel: "",
       videolink: "",
       description: "",
+      comments: []
     })
     setVideoLink("");
     setIsValidVideo(false);
@@ -100,7 +111,7 @@ export const Addlearn = (props: Props) => {
       addNewLearn();
       
     } else {
-      console.log("false")
+      // console.log("false")
     }
   }
 

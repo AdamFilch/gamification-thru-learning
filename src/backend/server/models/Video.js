@@ -26,6 +26,8 @@ const VideoSchema = new mongoose.Schema(
             type: String,
 
         },
+        comments: [],
+        
 
     },
     {collection: "learnvideo"},

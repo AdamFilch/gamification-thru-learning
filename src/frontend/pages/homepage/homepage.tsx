@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../../main'
 
@@ -6,6 +6,7 @@ import Learn from '../learn/learn'
 import About from './about'
 import Master from '../master'
 import Chatbot from './games'
+import { useAppSelector } from '../../hooks/useDispatch'
 
 
 
@@ -37,6 +38,8 @@ const Content = (activeTab: number) => {
   }
 
 }
+
+
 
 
 const HomePage = (props: Props) => {

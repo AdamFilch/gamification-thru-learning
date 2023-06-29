@@ -11,6 +11,7 @@ export const uploadLearn = async (req,res) => {
             channel,
             videolink,
             description,
+            comments,
         } = req.body;
 
         const newVideo = new Video({
@@ -20,6 +21,7 @@ export const uploadLearn = async (req,res) => {
             channel,
             videolink,
             description,
+            comments,
         })
 
         const savedVideo = await newVideo.save();
@@ -40,6 +42,7 @@ export const deleteLearn = async (req, res) => {
             channel,
             videolink,
             description,
+            comments,
         } = req.body;
 
         const newVideo = new Video({
@@ -50,6 +53,7 @@ export const deleteLearn = async (req, res) => {
             channel,
             videolink,
             description,
+            comments,
         })
 
         console.log(newVideo._id);
@@ -60,3 +64,37 @@ export const deleteLearn = async (req, res) => {
         console.log(err);
     }
 }
+
+export const commentLearn = async (req,res) => {
+    try{
+
+        const {
+            _id,
+            num,
+            title,
+            author,
+            channel,
+            videolink,
+            description,
+            comments,
+        } = req.body;
+
+        const newVideo = new Video({
+            _id,
+            num,
+            title,
+            author,
+            channel,
+            videolink,
+            description,
+            comments,
+        })
+        console.log("reached")
+
+        const savedVideo = await Video.replaceOne({_id: _id}, newVideo);
+        res.status(201).json(savedVideo);
+    } catch(err) {
+        console.log(err);
+    }
+
+};

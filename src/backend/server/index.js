@@ -18,7 +18,7 @@ import Video from "./models/Video.js";
 import axios from "axios";
 import WordScrambleWord from "./models/WordScramble.js";
 import Quiz from "./models/Quiz.js";
-import { deleteLearn, uploadLearn } from "./controllers/videos.js";
+import { commentLearn, deleteLearn, uploadLearn } from "./controllers/videos.js";
 import { uploadWSWord } from "./controllers/gws.js";
 import { deleteQQuestion, uploadQCard } from "./controllers/gq.js";
 
@@ -55,6 +55,7 @@ const upload = multer({ storage });
 app.post('/auth/register', upload.single("picture"), register);
 
 app.post('/video/post', uploadLearn);
+app.post('/video/comment/post', commentLearn);
 app.post('/WS/word/post', uploadWSWord);
 app.post('/Q/card/post', uploadQCard);
 
@@ -70,6 +71,7 @@ app.use('/video/delete', async (req, res) => {
             channel,
             videolink,
             description,
+            comments,
         } = req.body;
 
         const newVideo = new Video({
@@ -80,6 +82,7 @@ app.use('/video/delete', async (req, res) => {
             channel,
             videolink,
             description,
+            comments,
         })
 
         console.log(newVideo._id);
