@@ -26,17 +26,16 @@ const WSAddWord = (props: Props) => {
     })
     setValues({
         word: "",
-        hint: "",
-    })
+        hint: "",})
     }
 
     const wordValidator = () => {
         if(values.word.length == 0) {
             
-            setIsvalidWord(false);
+            return false
         } else {
-            addNewWord()
-            setIsvalidWord(true);
+            
+            return true
         }
     }
 
@@ -44,10 +43,10 @@ const WSAddWord = (props: Props) => {
         event.preventDefault();
         // console.log(values)
     
-        wordValidator();
-        if(isValidWord) {
+        // wordValidator();
+        if(wordValidator()) {
           console.log(true);
-          
+          addNewWord()  
         } else {
           console.log("false")
         }

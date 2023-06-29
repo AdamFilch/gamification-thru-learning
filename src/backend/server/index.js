@@ -20,7 +20,7 @@ import WordScrambleWord from "./models/WordScramble.js";
 import Quiz from "./models/Quiz.js";
 import { deleteLearn, uploadLearn } from "./controllers/videos.js";
 import { uploadWSWord } from "./controllers/gws.js";
-import { deleteQQuestion } from "./controllers/gq.js";
+import { deleteQQuestion, uploadQCard } from "./controllers/gq.js";
 
 
 
@@ -56,6 +56,7 @@ app.post('/auth/register', upload.single("picture"), register);
 
 app.post('/video/post', uploadLearn);
 app.post('/WS/word/post', uploadWSWord);
+app.post('/Q/card/post', uploadQCard);
 
 app.post('/Q/question/delete', deleteQQuestion);
 
