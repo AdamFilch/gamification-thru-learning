@@ -19,7 +19,7 @@ interface videoKey {
   channel: string,
   videolink: string,
   description: string;
-}
+};
 
 function Learnbox({ ...videos}: Props) {
 

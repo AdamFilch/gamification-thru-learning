@@ -146,6 +146,18 @@ app.get("/getVideos/:id", async(req, res) => {
     }
 })
 
+app.get("/getVideos/comments/:id", async(req, res) => {
+    try {
+        const { id } = req.params;
+        const videoSp = await Video.findById(id);
+        res.send({status: "ok", data: videoSp})
+
+    } catch (error) {
+        console.log(error)
+        
+    }
+})
+
 app.get("/getWSW", async(req, res) => {
     try {
         const words = await WordScrambleWord.find({});

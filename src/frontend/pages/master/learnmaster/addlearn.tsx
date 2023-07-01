@@ -22,7 +22,7 @@ type videoKey = {
   channel: string,
   videolink: string,
   description: string,
-  comments: comments,
+  comments: Array<comments>[],
 }
 
 type vidKeyUpl = {
