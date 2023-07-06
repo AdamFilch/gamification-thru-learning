@@ -1,5 +1,5 @@
 import React from 'react'
-import { ChartBarIcon, MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
+import { ChartBarIcon, MinusIcon, PlusIcon, UserGroupIcon } from "@heroicons/react/24/outline";
 import { useNavigate } from 'react-router-dom';
 
 
@@ -27,6 +27,11 @@ const AddDel = ({content, label, nav}: Props) => {
                 return <div>
                     <ChartBarIcon className='h-[50px] w-[50px] m-auto'/>
                     <span className=' text-[20px] '>View Student Records</span>
+                </div>
+            case 4:
+                return <div>
+                    <UserGroupIcon className='h-[50px] w-[50px] m-auto'/>
+                    <span className=' text-[20px] '>{label}</span>
                 </div>
             default:
                 return <div>Add</div>

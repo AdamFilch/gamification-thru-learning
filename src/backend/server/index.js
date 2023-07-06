@@ -178,6 +178,16 @@ app.get("/getQuestions", async(req, res) => {
     }
 })
 
+app.get("/getUsers", async(req, res) => {
+    try {
+        const allQuestions = await User.find({});
+        res.send({ status: "ok", data: allQuestions});
+        
+    } catch (error) {
+        console.log(error) 
+    }
+})
+
 
 /* MONGOOSE SERUP */
 const PORT = process.env.PORT || 6001;

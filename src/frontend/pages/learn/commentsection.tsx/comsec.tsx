@@ -116,12 +116,12 @@ function CommentSection({idv, ...video}: Props) {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-     createReply();
+     
 
     // const v_id = vid._id as string;
 
-    if(values.comment.length > 0) {
-      
+    if(values.comment.length > 1) {
+      createReply(); 
       console.log(videoVal)
 
       

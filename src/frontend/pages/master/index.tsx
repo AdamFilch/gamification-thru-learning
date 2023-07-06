@@ -30,6 +30,12 @@ const Master = (props: Props) => {
                 {/* <AddDel content={3} label='Add a Learn post' nav='/AddALearn'/> */}
             </div>
         </div>
+        <div className=' m-auto flex flex-col pt-10'>
+            <span className=' text-center text-[24px]  pb-4'>Edit User Permissions</span>
+            <div className=' flex flex-row m-auto space-x-16'>
+                <AddDel content={4} label='Change Permissions' nav='/User/Permissions'/>
+            </div>
+        </div>
     </div>
   )
 }

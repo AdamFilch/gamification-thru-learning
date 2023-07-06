@@ -23,7 +23,6 @@ const Deletecardbox = ({onToggle, ...questions}: Props) => {
     const handleToggle = () => {
         setToggle(!toggle);
         onToggle(question);
-    
     }
 
   return (

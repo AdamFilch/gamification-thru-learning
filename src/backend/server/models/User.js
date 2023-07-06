@@ -33,7 +33,15 @@ const UserSchema = new mongoose.Schema(
             type: String,
             enum: ['Player', 'Lecturer', 'Game Master'],
             default: "Player",   
-        }
+        },
+        teamsaccount: {
+            type: String,
+            default: ""
+        },
+        whatsappaccount: {
+            type: String,
+            default: ""
+        },
     }, 
     {timestamps: true}
 )

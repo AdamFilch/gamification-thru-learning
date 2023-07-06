@@ -17,6 +17,8 @@ import WSDeleteWord from "../pages/master/wsmaster/deleteword";
 import WSAddWord from "../pages/master/wsmaster/addword";
 import QDeletecard from "../pages/master/quizmaster/deletequiz";
 import QAddQuestion from "../pages/master/quizmaster/addquiz";
+import Index from "../pages/games/wordle2";
+import Permission from "../pages/master/permission/permission";
 
 const Rendering = () => {
 
@@ -44,9 +46,12 @@ const Rendering = () => {
         <Route path='/Q/AddACard' element={<QAddQuestion />}/>
         <Route path='/Q/DeleteACard' element={<QDeletecard />}/>
 
+        <Route path='/User/Permissions' element={<Permission />}/>
+
 
         <Route path='/Games/WordScramble' element={<WordScramble />}/>
         <Route path='/Games/Quiz' element={<Quiz />}/>
+        <Route path='/Games/Wordle' element={<Index />}/>
 
         <Route path='*'/> {/* NOT FOUND PAGE */}
     </Routes>
