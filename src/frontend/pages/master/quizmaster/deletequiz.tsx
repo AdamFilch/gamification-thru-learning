@@ -88,7 +88,7 @@ const QDeletecard = (props: Props) => {
     <div className='h-screen'>
             <button className='absolute p-7' onClick={() => navigate("/Home") }><CloseIcon sx={{fontSize: 50}}/></button>
             <div className='text-[25px] font-bold p-9 text-center'>Delete a Question Card</div>
-                <div className=' flex-col space-y-10 flex items-center'>
+            <div className=' flex-col space-y-10 flex items-center'>
                 {values.map((questions) => (
                     <Deletecardbox key={questions._id} {...questions} onToggle={handleToggle}/>
                 ))}
