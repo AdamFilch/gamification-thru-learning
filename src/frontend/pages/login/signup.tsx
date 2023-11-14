@@ -26,15 +26,16 @@ const LoginForm = () => {
     password: "",
     confirmPassword: "",
   });
+  const [errorFound, setErrorFound] = useState(false)
   
   const inputs = [
     {
       id: 1,
       name: "firstname",
       type: "text",
-      placeholder: "Enter your First Name",
+      placeholder: "Enter your Name",
       errormessage: "*Enter in the Name we should call you by.",
-      label: "First Name",
+      label: "Name",
       required: true,
     },
     {
@@ -52,9 +53,9 @@ const LoginForm = () => {
       name: "password",
       type: "password",
       placeholder: "Enter a Password",
-      errormessage: "*Password should be 5-20 characters and include at least 1 letter, 1 number and 1 special character!",
+      errormessage: "*Enter a password that you would remember",
       label: "Password",
-      //pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{5,20}$`,
+      // pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{5,20}$`,
       required: true,
     },
     {
@@ -76,9 +77,16 @@ const LoginForm = () => {
     }
     console.log(values);
 
-    const savedUserResponse = axios.post("http://localhost:3001/auth/register", values).then(res => {
-      console.log(res.data)  
-    });
+      const savedUserResponse = axios.post("http://localhost:3001/auth/register", values).then(res => {
+        console.log(res)  
+        setErrorFound(false);
+        navigate("/SignIn")
+        }).catch(function (error) {
+        setErrorFound(true);
+      })
+      
+
+    
   }
 
 
@@ -103,6 +111,12 @@ const LoginForm = () => {
     <div>
       <button className='absolute p-7' onClick={() => navigate("/") }><CloseIcon sx={{fontSize: 50}}/></button>
       <div className='flex align-middle justify-center text-[30px] pt-[50px] pb-9'>Register Now</div>
+      {errorFound ? (
+        <div className=' w-[400px] h-[70px] border-2 border-black bg-red-500 m-auto text-center p-2'>
+        <span className=' text-[18px] font-bold'>An error has been found, Invalid credentials or choose a different username</span>
+      </div>
+      ) : (<div></div>)}
+      
       <div className='flex align-middle w-[100%] h-[100%] justify-center'>
         
         <form id="signup-form" onSubmit={handleSubmit} noValidate>

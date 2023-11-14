@@ -32,6 +32,7 @@ const SignInForm = () => {
         username: "",
         password: ""
       });
+    const [errorFound, setErrorFound] = useState(false)
 
     const inputs = [
         {
@@ -49,7 +50,7 @@ const SignInForm = () => {
             name: "password",
             type: "password",
             placeholder: "Enter your Password",
-            errormessage: "Password should be 8-20 characters and include at least 1 letter, 1 number and 1 special character!",
+            errormessage: "Enter the password to the account",
             label: "Password",
             //pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`,
             required: true,
@@ -71,9 +72,11 @@ const SignInForm = () => {
           })
           );
 
-          
+        setErrorFound(false);
         console.log();
         navigate("/Home");
+      }).catch(function (error) {
+        setErrorFound(true);
       })
 
       // const loggedInResponse = await fetch(
@@ -121,6 +124,11 @@ const SignInForm = () => {
     <div className=''>
       <button className='absolute p-7' onClick={() => navigate("/") }><CloseIcon sx={{fontSize: 50}}/></button>
       <div className='flex align-middle justify-center text-[30px] pt-[50px] pb-9'>Log Into your Account</div>
+      {errorFound ? (
+        <div className=' w-[300px] h-[70px] border-2 border-black bg-red-500 m-auto text-center p-2'>
+        <span className=' text-[18px] font-bold'>An error has been found, Invalid Username and Password</span>
+      </div>
+      ) : (<div></div>)}
       <div className='flex align-middle w-[100%] h-[100%]  justify-center'>
         <form className=' ' onSubmit={handleSubmit} noValidate>
 

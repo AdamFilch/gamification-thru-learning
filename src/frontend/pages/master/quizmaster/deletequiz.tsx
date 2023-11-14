@@ -82,7 +82,7 @@ const QDeletecard = (props: Props) => {
         console.log(toDelete);
 
         
-    }
+    };
 
   return (
     <div className='h-screen'>

@@ -23,6 +23,7 @@ interface inputsKey {
 const FormInputs = ({ onChange, ...inputs }: Props) => {
 
   const [focused, setFocused] = useState(false);
+  const input2 = inputs as inputsKey
 
   const handleFocus = () => {
     setFocused(true);
@@ -43,10 +44,13 @@ const FormInputs = ({ onChange, ...inputs }: Props) => {
       {...inputs} 
       onChange={onChange}
       onBlur={handleFocus}
-      //onFocus={() => inputs.name === "confirmPassword"}
+      onFocus={() => input2.name === "confirmPassword" && setFocused(true)}
        />
-      <span className=' text-gray-600 hidden text-sm w-[300px] peer-[:not(:focus):invalid]:flex peer-[&:not(:placeholder-shown):not(:focus):invalid]:text-red-600 '>{input.errormessage}</span>
-      
+      {focused ?
+        (<span className=' text-gray-600 hidden text-sm w-[300px] peer-[:not(:focus):invalid]:flex peer-[&:not(:placeholder-shown):not(:focus):invalid]:text-red-600 '>{input.errormessage}</span>
+        )
+       : (<span></span>) }
+
       
   
     </div>

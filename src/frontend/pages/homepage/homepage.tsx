@@ -3,11 +3,11 @@ import { useSelector } from 'react-redux'
 import { RootState } from '../../../main'
 import CloseIcon from '@mui/icons-material/Close';
 import Learn from '../learn/learn'
-import About from './about'
 import Master from '../master'
 import Chatbot from './games'
 import { useAppSelector } from '../../hooks/useDispatch'
 import { useNavigate } from 'react-router-dom'
+import Contact from './about';
 
 
 
@@ -33,7 +33,7 @@ const Content = (activeTab: number) => {
     case 3:
       return <Master />
     case 4:
-      return <About />
+      return <Contact />
     default: 
       return <Learn />
   }
@@ -53,13 +53,13 @@ const HomePage = (props: Props) => {
     <div>
       <button className='absolute p-7' onClick={() => navigate("/") }><CloseIcon sx={{fontSize: 50}}/></button>
       <div className="justify-center col-auto flex">
-        <h1 className='font-bold text-[37px] p-14'>Welcome to (NAME OF WEB),  {user.firstname}</h1>
+        <h1 className='font-bold text-[37px] p-14'>Welcome to the Classroom,  {user.firstname}</h1>
         
       </div>
       <div>
         <blockquote>
           <span>
-            <h2 className='flex justify-center text-[30px]'>INTRODUCTORY QUOTE </h2>
+            <h2 className='flex justify-center text-[30px] w-[700px] m-auto text-center'>An Educational Entertainment platform for learning with minigames</h2>
           </span>
         </blockquote>
       </div>
@@ -71,9 +71,12 @@ const HomePage = (props: Props) => {
           <button key="2" className={`p-4 rounded-t-lg text-center text-[20px] border-b-2 transition-colors duration-300 ${2 == activeTab ? "border-yellow-700"
                   : "border-transparent hover:border-gray-200" }`}
                   onClick={() => setActiveTab(2)}>Learn</button>
-          <button key="3" className={`p-4 rounded-t-lg text-center text-[20px] border-b-2 transition-colors duration-300 ${3 == activeTab ? "border-yellow-700"
+          {user.role == "Game Master" || user.role == "Lecturer" ? (<button key="3" className={`p-4 rounded-t-lg text-center text-[20px] border-b-2 transition-colors duration-300 ${3 == activeTab ? "border-yellow-700"
                   : "border-transparent hover:border-gray-200" }`}
-                  onClick={() => setActiveTab(3)}>Game Master</button>
+                  onClick={() => setActiveTab(3)}>Game Master</button>) : (<></>)  }
+          {/* <button key="4" className={`p-4 rounded-t-lg text-center text-[20px] border-b-2 transition-colors duration-300 ${4 == activeTab ? "border-yellow-700"
+                  : "border-transparent hover:border-gray-200" }`}
+                  onClick={() => setActiveTab(4)}>Contact</button> */}
           {/* <button key="3" className="inline-block p-4 hover:border-gray-300 rounded-t-lg text-center border-transparent border-b-2">Game Master</button> */}
           {/* <button key="4" className={`p-4 rounded-t-lg text-center  text-[20px] border-b-2 transition-colors duration-300 ${4 == activeTab ? "border-yellow-700"
                   : "border-transparent hover:border-gray-200" }`}

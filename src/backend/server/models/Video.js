@@ -4,11 +4,9 @@ const VideoSchema = new mongoose.Schema(
     {
         num: {
             type: Number,
-
         },
         title: {
             type: String,
-
         },
         author: {
             type: String,
@@ -20,15 +18,11 @@ const VideoSchema = new mongoose.Schema(
         },
         videolink: {
             type: String,
-
         },
         description: {
             type: String,
-
         },
         comments: [],
-        
-
     },
     {collection: "learnvideo"},
 

@@ -46,6 +46,7 @@ const QAddQuestion = (props: Props) => {
         answer: false,
     })
 
+
     const addNewCard = () => {
             const savedCardResponse = axios.post("http://localhost:3001/Q/card/post", values as unknown as keyof questionKey).then(res => {
             console.log(res.data);
@@ -85,12 +86,24 @@ const QAddQuestion = (props: Props) => {
                 setToggle2(false);
                 setToggle3(false);
                 setToggle4(false);
+
+                setOption1({...option1, answer: true });
+        setOption2({...option2, answer: false });
+        setOption3({...option3, answer: false });
+        setOption4({...option4, answer: false });
+                
                 break;
             case "2":
                 setToggle1(false);
                 setToggle2(true);
                 setToggle3(false);
                 setToggle4(false);
+                
+                setOption2({...option2, answer: true });
+                setOption1({...option1, answer: false });
+        
+        setOption3({...option3, answer: false });
+        setOption4({...option4, answer: false });
                 break;
             
             case "3":
@@ -98,6 +111,12 @@ const QAddQuestion = (props: Props) => {
                 setToggle2(false);
                 setToggle3(true);
                 setToggle4(false);
+
+                setOption3({...option3, answer: true });
+                setOption1({...option1, answer: false });
+                setOption2({...option2, answer: false });
+                setOption4({...option4, answer: false });
+                
                 break;
             
             case "4":
@@ -105,8 +124,18 @@ const QAddQuestion = (props: Props) => {
                 setToggle2(false);
                 setToggle3(false);
                 setToggle4(true);
+
+
+                setOption4({...option4, answer: true });
+                setOption1({...option1, answer: false });
+                setOption2({...option2, answer: false });
+                setOption3({...option3, answer: false });
+                
+                
                 break;
         }
+
+        createOptions();
     }
 
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -137,13 +166,15 @@ const QAddQuestion = (props: Props) => {
 
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        
         event.preventDefault();
-        // console.log(values)
+        
         createOptions();
+        
         questionValidator();
-
+        
         if(questionValidator()) {
-          console.log(true);
+          console.log(values);
           addNewCard();
           
         } else {
@@ -154,15 +185,18 @@ const QAddQuestion = (props: Props) => {
 
     const createOptions = () => {
 
-        setOption1({...option1, answer: toggle1 });
-        setOption2({...option2, answer: toggle2 });
-        setOption3({...option3, answer: toggle3 });
-        setOption4({...option4, answer: toggle4 });
+        // setOption1({...option1, answer: toggle1 });
+        // setOption2({...option2, answer: toggle2 });
+        // setOption3({...option3, answer: toggle3 });
+        // setOption4({...option4, answer: toggle4 });
         const optionsArr = [option1, option2, option3, option4];
-        // console.log(optionsArr);
         setValues({...values, options: optionsArr});
         // console.log(values);
 
+    }
+
+    const createValu = () => {
+        
     }
 
     const questionValidator = () => {

@@ -90,18 +90,18 @@ function CommentSection({idv, ...video}: Props) {
 
   const [videoVal, setVideoVal] = useState<videoKey>({
     _id: vid._id,
-      num: vid.num,
-      title: vid.title,
-      author: vid.author,
-      channel: vid.channel,
-      videolink: vid.videolink,
-      description: vid.description,
+    num: vid.num,
+    title: vid.title,
+    author: vid.author,
+    channel: vid.channel,
+    videolink: vid.videolink,
+    description: vid.description,
     comments: [],
   });
 
   const addNewComment = () => {
     
-    const savedVideoResponse = axios.post(`http://localhost:3001/video/comment/post` , videoVal).then(res => {
+    const savedVideoResponse = axios.post(`http://localhost:3001/video/comment/post`, vid).then(res => {
       console.log(res.data);
     })
     const ator = user.username || user.firstname;
@@ -110,8 +110,7 @@ function CommentSection({idv, ...video}: Props) {
       comment: "",
       author: ator, 
       date: now.toLocaleDateString()});
-    
-
+      
   }
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -121,13 +120,19 @@ function CommentSection({idv, ...video}: Props) {
     // const v_id = vid._id as string;
 
     if(values.comment.length > 1) {
-      createReply(); 
-      console.log(videoVal)
-
-      
-
-
-
+      // vid.comments.push(values as any);
+      // setVideoVal({
+      //   _id: vid._id,
+      //   num: vid.num,
+      //   title: vid.title,
+      //   author: vid.author,
+      //   channel: vid.channel,
+      //   videolink: vid.videolink,
+      //   description: vid.description,
+      //   comments: vid.comments
+      // }), () => {console.log(videoVal)}
+      createReply();
+      console.log(vid);
       addNewComment();
 
       
@@ -145,21 +150,10 @@ function CommentSection({idv, ...video}: Props) {
 
   const createReply = async() => {
 
-    
-    
-        
-
     vid.comments.push(values as any);
-    await setVideoVal({
-      _id: vid._id,
-      num: vid.num,
-      title: vid.title,
-      author: vid.author,
-      channel: vid.channel,
-      videolink: vid.videolink,
-      description: vid.description,
+    await setVideoVal({...videoVal,
       comments: vid.comments
-      })
+    });
   }
 
   const getComments = () => {
@@ -175,10 +169,6 @@ function CommentSection({idv, ...video}: Props) {
     return null;
   }
 
-  const createArray = () => {
-    
-    
-  }
 
   const handleToggle = () => {
     getComments();

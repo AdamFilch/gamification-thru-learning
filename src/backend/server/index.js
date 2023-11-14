@@ -21,6 +21,7 @@ import Quiz from "./models/Quiz.js";
 import { commentLearn, deleteLearn, uploadLearn } from "./controllers/videos.js";
 import { uploadWSWord } from "./controllers/gws.js";
 import { deleteQQuestion, uploadQCard } from "./controllers/gq.js";
+import { deleteUser, updateUser } from "./controllers/users.js";
 
 
 
@@ -60,6 +61,9 @@ app.post('/WS/word/post', uploadWSWord);
 app.post('/Q/card/post', uploadQCard);
 
 app.post('/Q/question/delete', deleteQQuestion);
+
+app.post('/User/Delete', deleteUser);
+app.post('/User/Edit/permission', updateUser);
 
 app.use('/video/delete', async (req, res) => {
     try {

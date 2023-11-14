@@ -4,15 +4,13 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 
-type Props = {}
-
 type wordKey = {
-    word: String,
-    hint: String,
-    shuffle: String,
+    word: string,
+    hint: string,
+    shuffle: string,
 }
 
-const WordScramble = (props: Props) => {
+const WordScramble = () => {
     const navigate = useNavigate();
 
 
@@ -54,9 +52,9 @@ const WordScramble = (props: Props) => {
           let data = res.data.data;
           data = data[Math.floor(Math.random()*data.length)]
           data = data as wordKey;
-          let wordArray = data.word.split("")
+          const wordArray = data.word.split("")
           for (let i = wordArray.length - 1; i > 0; i--) {
-            let j = Math.floor(Math.random() * (i + 1));
+            const j = Math.floor(Math.random() * (i + 1));
             [wordArray[i], wordArray[j]] = [wordArray[j], wordArray[i]];
         }
         //   console.log(shed)

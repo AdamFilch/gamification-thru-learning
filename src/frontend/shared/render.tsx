@@ -19,6 +19,8 @@ import QDeletecard from "../pages/master/quizmaster/deletequiz";
 import QAddQuestion from "../pages/master/quizmaster/addquiz";
 import Index from "../pages/games/wordle2";
 import Permission from "../pages/master/permission/permission";
+import Wsdata from "../pages/master/wsmaster/wsdata";
+import Quizdata from "../pages/master/quizmaster/quizdata";
 
 const Rendering = () => {
 
@@ -29,7 +31,6 @@ const Rendering = () => {
     <Routes>
         <Route path='/' element={<App />}/> {/* LANDING PAGE */}
         <Route path='/SignUp' element={<LoginForm />} /> {/* SIGN-IN PAGE */}
-        <Route path='/BecomeAPlayer' /> {/* BECOME A PLAYER PAGE */}
         <Route path='/SignIn' element={<SignInForm />}/> {/* LOG-IN PAGE */}
         <Route path="/Home/*" element={isAuth ? <HomePage /> : <Navigate to="/" />} />{/* HOME PAGE IN LOGIN */} 
         <Route path="/ProfilePage/:userId" element={isAuth ? <ProfilePage /> : <Navigate to="/" />} />{/* HOME PAGE IN LOGIN */} 
@@ -42,9 +43,11 @@ const Rendering = () => {
 
         <Route path='/WS/AddAWord' element={<WSAddWord />}/>
         <Route path='/WS/DeleteAWord' element={<WSDeleteWord />}/>
+        <Route path='/WS/DataAnalysis' element={<Wsdata />}/>
 
         <Route path='/Q/AddACard' element={<QAddQuestion />}/>
         <Route path='/Q/DeleteACard' element={<QDeletecard />}/>
+        <Route path='/Q/DataAnalysis' element={<Quizdata />}/>
 
         <Route path='/User/Permissions' element={<Permission />}/>
 

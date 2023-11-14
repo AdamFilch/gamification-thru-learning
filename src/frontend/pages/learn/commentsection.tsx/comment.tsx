@@ -13,12 +13,6 @@ type commentsKey = {
 
 const Commentbox = ({ comment}: Props) => {
 
-  const dateCal = () => {
-    
-  }
-
-
-
 
   return (
     <div className='pt-3'>
