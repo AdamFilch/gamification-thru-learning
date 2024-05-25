@@ -6,22 +6,21 @@ import ContactBox from './contactsbox';
 import { useSelector } from 'react-redux'
 import { RootState } from '../../../main'
 
-type Props = {}
 
 
 type UserKey = {
   _id: string;
-  firstname: String;
-  username: String;
-  password: String;
-  role: String;
-  teamsaccount: String;
-  whatsappaccount: String;
-  title: String;
+  firstname: string;
+  username: string;
+  password: string;
+  role: string;
+  teamsaccount: string;
+  whatsappaccount: string;
+  title: string;
 
 }
 
-const Contact = (props: Props) => {
+const Contact = () => {
   const navigate = useNavigate();
   const data = useSelector<RootState>((state => state.user))
   const s = data as UserKey;
@@ -40,7 +39,7 @@ const Contact = (props: Props) => {
   const getUsers = () => {
     axios.get("http://localhost:3001/getUsers").then((res) => {
       const data = res.data.data;
-      let array:UserKey[] = data
+      const array:UserKey[] = data
       
       setValues(array.filter((el) => {
         return el.role === "Lecturer";

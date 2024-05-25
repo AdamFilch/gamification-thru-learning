@@ -1,6 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
+
 import cors from "cors";
 import dotenv from "dotenv";
 import multer from "multer";
@@ -194,6 +195,7 @@ app.get("/getUsers", async(req, res) => {
 
 
 /* MONGOOSE SERUP */
+const uri = process.env.MONGODB_URI;
 const PORT = process.env.PORT || 6001;
 mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
@@ -210,12 +212,12 @@ mongoose.connect(process.env.MONGO_URL, {
 
     } finally {
         // client.close();
-        console.log("Done")
+        console.log("Conntected to MongoDB")
     }
     
 
 
 
-}).catch((error) => console.log(`${error} did not connect`));
+}).catch((error) => console.log(`${error} did not connect fuck`));
 
 

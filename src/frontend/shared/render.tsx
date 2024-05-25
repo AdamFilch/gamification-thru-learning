@@ -3,7 +3,6 @@ import { Routes, Route, Navigate } from "react-router-dom"
 import App from '../../App'
 import LoginForm from '../pages/login/signup'
 import SignInForm from "../pages/login/signinform"
-import { useMemo } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../main";
 import ProfilePage from "../pages/profilepage/profilepage";
@@ -24,7 +23,6 @@ import Quizdata from "../pages/master/quizmaster/quizdata";
 
 const Rendering = () => {
 
-  const mode = useSelector<RootState, string>((state) => state.mode);
   const isAuth = Boolean(useSelector<RootState>((state) => state.token))
 
   return (

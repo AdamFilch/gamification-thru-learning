@@ -3,9 +3,7 @@ import Gamesbox from './gamesbox'
 import quiz from '../../../assets/quizgames.png'
 import ws from '../../../assets/wordscramblegames.png'
 
-type Props = {}
-
-const Games = (props: Props) => {
+const Games = () => {
   return (
     <div className='flex justify-center'>
       <div className=' grid grid-cols-3 gap-9 '>
