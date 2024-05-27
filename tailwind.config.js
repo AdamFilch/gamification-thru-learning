@@ -14,16 +14,27 @@ export default {
         "21/9": [21, 9]
       },
 
+
+      fontFamily: {
+        'sans': ["REM", ],
+      'serif':  ["Playfair Display"],
+      'mono':  ["Reddit Mono"],
+      'accent':  ["Anton"],
+      'body':  ["Monsterrat"],
+
+      },
+
       colors: {
-        "gray-20": "#F8F4EB",
-        "gray-50": "#EFE6E6",
-        "gray-100": "#DFCCCC",
-        "gray-500": "#5E0000",
-        "primary-100": "#FFE1E0",
-        "primary-300": "#FFA6A3",
-        "primary-500": "#FF6B66",
-        "secondary-400": "#FFCD5B",
-        "secondary-500": "#FFC132",
+        "main-bg": "#fffffe",
+        "headline": "#2b2c34",
+        "paragraph": "#2b2c34",
+        "text-secondary": "#fffffe",
+        "text-primary": "#2b2c34",
+        "highlight": "#6246ea",
+        "secondary": "#d1d1e9",
+        "tertiary": "#e45858",
+        "accent-primary": "#72757e",
+        "accent-secondary": "#303633",
       },
     },
   },
