@@ -13,9 +13,7 @@ export function LandingPage() {
       <div>
         <HomePage />
       </div>
-      <div>
-        <CurrentContent />
-      </div>
+      <div>{/* <CurrentContent /> */}</div>
       <div>
         <Footer />
       </div>
