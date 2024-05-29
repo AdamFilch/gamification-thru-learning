@@ -6,15 +6,17 @@ import { Footer } from '../footer';
 
 export function LandingPage() {
   return (
-    <div>
-      <div>
+    <div className="relative">
+      <div className="sticky top-0">
         <Navbar />
       </div>
       <div>
         <HomePage />
       </div>
-      <div>{/* <CurrentContent /> */}</div>
       <div>
+        <CurrentContent />
+      </div>
+      <div className="pt-[60px]">
         <Footer />
       </div>
     </div>

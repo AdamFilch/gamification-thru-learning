@@ -23,7 +23,7 @@ export const HomePage = () => {
           <div>
             <blockquote>
               <span>
-                <h2 className=" mt-2 text-center font-sans  text-[15px]  font-light lg:text-[20px]">
+                <h2 className=" mt-2 text-center font-sans  text-[15px]  font-light leading-tight lg:text-[20px]">
                   An Educational Entertainment platform for learning with
                   minigames
                 </h2>

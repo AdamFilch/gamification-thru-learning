@@ -1,5 +1,7 @@
 {
     "plugins": ["prettier-plugin-tailwindcss"],
+    "tailwindConfig": "./tailwind.config.js",
+    "tailwindCSSClassSorter": false,
     "semi": true,
     "singleQuote": true,
     "printWidth": 80,
