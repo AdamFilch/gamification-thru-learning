@@ -42,22 +42,32 @@ export function Footer() {
           <div className=" text-text-secondary mb-2 text-[15px] font-semibold">
             TECH STACK
           </div>
-          <span className=" hover:text-tertiary transition-all duration-300">
-            Typescript
-          </span>
-          <span className=" hover:text-tertiary transition-all duration-300">
-            React
-          </span>
-          <span className=" hover:text-tertiary transition-all duration-300">
-            Tailwind
-          </span>
-          <span className=" hover:text-tertiary transition-all duration-300">
-            MongoDB
-          </span>
-          {/* <span>Express</span> */}
-          <span className=" hover:text-tertiary transition-all duration-300">
-            YouTube API
-          </span>
+          <div>
+            <span className=" hover:text-tertiary transition-all duration-300">
+              Typescript
+            </span>
+          </div>
+          <div>
+            <span className=" hover:text-tertiary transition-all duration-300">
+              React
+            </span>
+          </div>
+          <div>
+            <span className=" hover:text-tertiary transition-all duration-300">
+              Tailwind
+            </span>
+          </div>
+          <div>
+            <span className=" hover:text-tertiary transition-all duration-300">
+              MongoDB
+            </span>
+          </div>
+          {/* <div>Express</div> */}
+          <div>
+            <span className=" hover:text-tertiary transition-all duration-300">
+              Youtube API
+            </span>
+          </div>
         </div>
       </div>
     </div>
