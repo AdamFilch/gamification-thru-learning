@@ -1,1 +1,1 @@
-export * from "./MasterNav";
+export * from "./GMNav";

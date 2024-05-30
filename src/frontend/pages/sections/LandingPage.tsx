@@ -1,22 +1,26 @@
 import React from 'react';
-import { Navbar } from '../navbar';
+import { SectionNav, TopBar } from '../navbar';
 import { HomePage } from '../homepage';
 import CurrentContent from '../homepage/content';
 import { Footer } from '../footer';
+import { GMNav } from '../master/masternavi';
+import { MasterContent } from '../master';
 
 export function LandingPage() {
   return (
     <div className="relative">
       <div className="sticky top-0">
-        <Navbar />
+        <TopBar />
       </div>
       <div>
         <HomePage />
       </div>
       <div>
-        <CurrentContent />
+        <SectionNav />
+        <MasterContent />
+        {/* <CurrentContent /> */}
       </div>
-      <div className="pt-[60px]">
+      <div className="mt-[20px]">
         <Footer />
       </div>
     </div>

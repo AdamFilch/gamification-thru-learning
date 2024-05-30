@@ -1,6 +1,6 @@
 import MenuIcon from '@mui/icons-material/Menu';
 
-export function Navbar() {
+export function TopBar() {
   return (
     <div className="bg-highlight text-text-secondary grid grid-flow-col px-2 font-mono text-lg tracking-wide sm:px-8 md:grid-cols-2 lg:grid-cols-3">
       <div className="hidden lg:block"></div>

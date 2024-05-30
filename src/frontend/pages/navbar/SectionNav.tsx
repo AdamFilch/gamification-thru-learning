@@ -1,34 +1,30 @@
-import React, { useState } from 'react';
-import Learn from '../learn/learn';
-import { MasterContent } from '../master';
-import Chatbot from './games';
-// import Contact from '../about/about';
 import { userInt } from '../../shared/types';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../main';
+import { useState } from 'react';
 
-export default function CurrentContent() {
+export function SectionNav() {
   const [activeTab, setActiveTab] = useState(2);
   const data = useSelector<RootState>((state) => state.user);
   const user = data as userInt;
 
-  const Content = (activeTab: number) => {
-    switch (activeTab) {
-      case 1:
-        return <Chatbot />;
-      case 2:
-        return <Learn />;
-      case 3:
-        return <MasterContent />;
-      case 4:
-      // return <Contact />;
-      default:
-        return <MasterContent />;
-    }
-  };
+  //   const Content = (activeTab: number) => {
+  //     switch (activeTab) {
+  //       case 1:
+  //         return <Chatbot />;
+  //       case 2:
+  //         return <Learn />;
+  //       case 3:
+  //         return <MasterContent />;
+  //       case 4:
+  //       // return <Contact />;
+  //       default:
+  //         return <MasterContent />;
+  //     }
+  //   };
   return (
-    <div className="mx-5 mt-6">
-      <div className=" sticky top-9 m-auto flex max-w-[550px] flex-auto rounded-xl border-2 border-black bg-white px-2  text-center font-mono text-[14px] leading-none sm:text-[16px]">
+    <div className=" sticky top-3 px-5 py-6">
+      <div className="  m-auto flex max-w-[550px] flex-auto rounded-xl border-2 border-black bg-white px-2  text-center font-mono text-[14px] leading-none sm:text-[16px]">
         <button
           key="1"
           className={` duration-600 flex-1 border-b-2 px-4 py-3 uppercase  transition-all sm:p-4 ${
@@ -66,12 +62,6 @@ export default function CurrentContent() {
         ) : (
           <></>
         )}
-      </div>
-
-      <div>
-        <div className=" pt-6">
-          <h2>{Content(activeTab)}</h2>
-        </div>
       </div>
     </div>
   );
