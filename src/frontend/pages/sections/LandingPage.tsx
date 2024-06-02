@@ -3,7 +3,6 @@ import { SectionNav, TopBar } from '../navbar';
 import { HomePage } from '../homepage';
 import CurrentContent from '../homepage/content';
 import { Footer } from '../footer';
-import { GMNav } from '../master/masternavi';
 import { MasterContent } from '../master';
 
 export function LandingPage() {

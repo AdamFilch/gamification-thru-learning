@@ -1,11 +1,11 @@
-import { GMNav } from './masternavi';
+import useMediaQuery from '../../shared/useMediaQuery';
+import { GMNavMD, GMNavSM } from './masternavi';
 
 export function MasterContent() {
+  const isMD = useMediaQuery(768);
   return (
-    <div>
-      <div className=" min-h-screen">
-        <GMNav />
-      </div>
+    <div className="m-auto grid h-full max-w-[1600px]">
+      <div className=" min-h-screen">{isMD ? <GMNavSM /> : <GMNavMD />}</div>
     </div>
   );
 }

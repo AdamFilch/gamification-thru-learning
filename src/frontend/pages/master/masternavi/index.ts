@@ -1,1 +1,3 @@
-export * from "./GMNav";
+export * from './GMNavSM';
+export * from './GMNavMENU';
+export * from './GMNavMD';

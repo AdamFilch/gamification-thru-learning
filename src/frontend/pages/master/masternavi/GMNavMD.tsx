@@ -1,0 +1,23 @@
+import React from 'react';
+
+export function GMNavMD() {
+  return (
+    <ul className=" left-2 ml-10 grid w-max grid-flow-row gap-2 rounded-2xl border-2 border-black bg-white p-7 px-10 font-mono text-lg">
+      <div className="mb-3 text-center font-sans text-[16px] font-semibold">
+        NAVIGATION
+      </div>
+      <li className=" text-[22px] font-bold">Learn</li>
+      <li className="text-[22px] font-bold">
+        Games
+        <ul className="grid grid-flow-row gap-2 pt-3 text-[20px] font-light">
+          <li className="pl-5">Word Scramble</li>
+          <li className="pl-5">Quiz</li>
+          <li className="pl-5">Wordle</li>
+          <li className="pl-5">Drag-N-Drop</li>
+        </ul>
+      </li>
+
+      <li className="text-[22px] font-bold">Users</li>
+    </ul>
+  );
+}

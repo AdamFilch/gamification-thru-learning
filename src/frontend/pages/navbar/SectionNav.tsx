@@ -24,7 +24,7 @@ export function SectionNav() {
   //   };
   return (
     <div className=" sticky top-3 px-5 py-6">
-      <div className="  m-auto flex max-w-[550px] flex-auto rounded-xl border-2 border-black bg-white px-2  text-center font-mono text-[14px] leading-none sm:text-[16px]">
+      <div className="  m-auto flex max-w-[550px] flex-auto rounded-xl border-2 border-black bg-white px-2  text-center font-mono text-[14px] font-light leading-none sm:text-[16px]">
         <button
           key="1"
           className={` duration-600 flex-1 border-b-2 px-4 py-3 uppercase  transition-all sm:p-4 ${
