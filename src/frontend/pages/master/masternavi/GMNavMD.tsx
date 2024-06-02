@@ -6,10 +6,10 @@ export function GMNavMD() {
       <div className="mb-3 text-center font-sans text-[16px] font-semibold">
         NAVIGATION
       </div>
-      <li className=" text-[22px] font-bold">Learn</li>
-      <li className="text-[22px] font-bold">
+      <li className="text-[19px] font-bold lg:text-[22px]">Learn</li>
+      <li className="text-[19px] font-bold lg:text-[22px]">
         Games
-        <ul className="grid grid-flow-row gap-2 pt-3 text-[20px] font-light">
+        <ul className="grid grid-flow-row gap-2 pt-3 text-[16px] font-light lg:text-[20px]">
           <li className="pl-5">Word Scramble</li>
           <li className="pl-5">Quiz</li>
           <li className="pl-5">Wordle</li>
@@ -17,7 +17,7 @@ export function GMNavMD() {
         </ul>
       </li>
 
-      <li className="text-[22px] font-bold">Users</li>
+      <li className="text-[19px] font-bold lg:text-[22px]">Users</li>
     </ul>
   );
 }
