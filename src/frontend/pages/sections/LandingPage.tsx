@@ -14,7 +14,7 @@ export function LandingPage() {
       <div>
         <HomePage />
       </div>
-      <div>
+      <div id="topOfSection">
         <SectionNav />
         <MasterContent />
         {/* <CurrentContent /> */}

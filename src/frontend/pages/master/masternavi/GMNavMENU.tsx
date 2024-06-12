@@ -1,20 +1,36 @@
 import React from 'react';
+import NavBtn from './NavBtn';
 
 export function GMNavMENU() {
   return (
-    <ul className=" left-2 grid w-max grid-flow-row gap-2 rounded-2xl border-2 border-black bg-white p-4 pl-6 font-mono max-md:absolute max-md:bottom-[120%] md:sticky ">
-      <li className=" font-bold">Learn</li>
-      <li className="font-bold">
+    <ul className="grid w-max grid-flow-row gap-2 rounded-2xl border-2 border-black bg-white p-4 pl-6 font-mono max-md:absolute max-md:bottom-[100%] md:sticky ">
+      <div className="mb-3 text-center font-sans text-[16px] font-semibold">
+        NAVIGATION
+      </div>
+
+      <NavBtn level={1} nav="learn">
+        Learn
+      </NavBtn>
+      <li className="">
         Games
         <ul className="grid grid-flow-row gap-2 pl-4 pt-2 font-light">
-          <li>Word Scramble</li>
-          <li>Quiz</li>
-          <li>Wordle</li>
-          <li>Drag-N-Drop</li>
+          <NavBtn level={2} nav="wordScramble">
+            Word Scramble
+          </NavBtn>
+          <NavBtn level={2} nav="quiz">
+            Quiz
+          </NavBtn>
+          <NavBtn level={2} nav="wordle">
+            Wordle
+          </NavBtn>
+          <NavBtn level={2} nav="dragNDrop">
+            Drag-N-Drop
+          </NavBtn>
         </ul>
       </li>
-
-      <li className="font-bold">Users</li>
+      <NavBtn level={1} nav="users">
+        Users
+      </NavBtn>
     </ul>
   );
 }
