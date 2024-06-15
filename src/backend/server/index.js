@@ -25,13 +25,10 @@ import { deleteQQuestion, uploadQCard } from "./controllers/gq.js";
 import { deleteUser, updateUser } from "./controllers/users.js";
 
 
-
-
-
 /* CONFIGURATIONS (MIDDLE WARE) */
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-dotenv.config();
+dotenv.config({ path: path.resolve(__dirname, '.env') });
 const app = express();
 app.use(express.json());
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
@@ -44,12 +41,12 @@ app.use("/assets", express.static(path.join(__dirname, "public/assets")));
 
 /* FILE STORAGE */
 const storage = multer.diskStorage({
-    destination: function(req, file, cb) {
-        cb(null, "public/assets");
-    },
-    filename: function(req, file, cb) {
-        cb(null, file.originalname);
-    }
+  destination: function (req, file, cb) {
+    cb(null, "public/assets");
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname);
+  }
 });
 const upload = multer({ storage });
 
@@ -67,59 +64,59 @@ app.post('/User/Delete', deleteUser);
 app.post('/User/Edit/permission', updateUser);
 
 app.use('/video/delete', async (req, res) => {
-    try {
-        const {
-            _id,
-            num,
-            title,
-            author,
-            channel,
-            videolink,
-            description,
-            comments,
-        } = req.body;
+  try {
+    const {
+      _id,
+      num,
+      title,
+      author,
+      channel,
+      videolink,
+      description,
+      comments,
+    } = req.body;
 
-        const newVideo = new Video({
-            _id,
-            num,
-            title,
-            author,
-            channel,
-            videolink,
-            description,
-            comments,
-        })
+    const newVideo = new Video({
+      _id,
+      num,
+      title,
+      author,
+      channel,
+      videolink,
+      description,
+      comments,
+    })
 
-        console.log(newVideo._id);
-        const deletedVid = await Video.findByIdAndDelete(newVideo._id);
-        res.send({status: "ok", data: "deleted"});
-         
-    } catch (err) {
-        console.log(err);
-    }
+    console.log(newVideo._id);
+    const deletedVid = await Video.findByIdAndDelete(newVideo._id);
+    res.send({ status: "ok", data: "deleted" });
+
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 app.use('/WS/word/delete', async (req, res) => {
-    try {
-        const {
-            _id,
-            word,
-            hint,
-        } = req.body;
+  try {
+    const {
+      _id,
+      word,
+      hint,
+    } = req.body;
 
-        const DelWord = new WordScrambleWord({
-            _id,
-            word,
-            hint,
-        })
+    const DelWord = new WordScrambleWord({
+      _id,
+      word,
+      hint,
+    })
 
-        console.log(DelWord._id);
-        const deletedWord = await WordScrambleWord.findByIdAndDelete({_id: DelWord._id})
-        res.send({status: "ok", data: "deleted"})
-         
-    } catch (err) {
-        console.log(err);
-    }
+    console.log(DelWord._id);
+    const deletedWord = await WordScrambleWord.findByIdAndDelete({ _id: DelWord._id })
+    res.send({ status: "ok", data: "deleted" })
+
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 /* ROUTES */
@@ -129,92 +126,92 @@ app.use("/users", userRoutes);
 /* GET ROUTES */
 
 
-app.get("/getVideos", async(req, res) => {
-    try {
-        const allVideos = await Video.find({});
-        res.send({ status: "ok", data: allVideos});
-        
-    } catch (error) {
-        console.log(error) 
-    }
+app.get("/getVideos", async (req, res) => {
+  try {
+    const allVideos = await Video.find({});
+    res.send({ status: "ok", data: allVideos });
+
+  } catch (error) {
+    console.log(error)
+  }
 })
 
-app.get("/getVideos/:id", async(req, res) => {
-    try {
-        const { id } = req.params;
-        const videoSp = await Video.findById(id);
-        res.send({status: "ok", data: videoSp})
+app.get("/getVideos/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const videoSp = await Video.findById(id);
+    res.send({ status: "ok", data: videoSp })
 
-    } catch (error) {
-        console.log(error)
-        
-    }
+  } catch (error) {
+    console.log(error)
+
+  }
 })
 
-app.get("/getVideos/comments/:id", async(req, res) => {
-    try {
-        const { id } = req.params;
-        const videoSp = await Video.findById(id);
-        res.send({status: "ok", data: videoSp})
+app.get("/getVideos/comments/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const videoSp = await Video.findById(id);
+    res.send({ status: "ok", data: videoSp })
 
-    } catch (error) {
-        console.log(error)
-        
-    }
+  } catch (error) {
+    console.log(error)
+
+  }
 })
 
-app.get("/getWSW", async(req, res) => {
-    try {
-        const words = await WordScrambleWord.find({});
-        res.send({ status: "ok", data: words});
-        
-    } catch (error) {
-        console.log(error) 
-    }
+app.get("/getWSW", async (req, res) => {
+  try {
+    const words = await WordScrambleWord.find({});
+    res.send({ status: "ok", data: words });
+
+  } catch (error) {
+    console.log(error)
+  }
 })
 
-app.get("/getQuestions", async(req, res) => {
-    try {
-        const allQuestions = await Quiz.find({});
-        res.send({ status: "ok", data: allQuestions});
-        
-    } catch (error) {
-        console.log(error) 
-    }
+app.get("/getQuestions", async (req, res) => {
+  try {
+    const allQuestions = await Quiz.find({});
+    res.send({ status: "ok", data: allQuestions });
+
+  } catch (error) {
+    console.log(error)
+  }
 })
 
-app.get("/getUsers", async(req, res) => {
-    try {
-        const allQuestions = await User.find({});
-        res.send({ status: "ok", data: allQuestions});
-        
-    } catch (error) {
-        console.log(error) 
-    }
+app.get("/getUsers", async (req, res) => {
+  try {
+    const allQuestions = await User.find({});
+    res.send({ status: "ok", data: allQuestions });
+
+  } catch (error) {
+    console.log(error)
+  }
 })
 
 
 /* MONGOOSE SERUP */
-const uri = process.env.MONGODB_URI;
+// const uri = process.env.MONGODB_URI;
 const PORT = process.env.PORT || 6001;
 mongoose.connect(process.env.MONGO_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 }).then(() => {
-    app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
+  app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
 
-    // Insert Data one time
-    try {
-        // Video.insertMany(videos)
-        // WordScrambleWord.insertMany(WSWords);
-        // Quiz.insertMany(QQuestions);
-        
+  // Insert Data one time
+  try {
+    // Video.insertMany(videos)
+    // WordScrambleWord.insertMany(WSWords);
+    // Quiz.insertMany(QQuestions);
 
-    } finally {
-        // client.close();
-        console.log("Conntected to MongoDB")
-    }
-    
+
+  } finally {
+    // client.close();
+    console.log("Conntected to MongoDB")
+  }
+
 
 
 
